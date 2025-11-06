@@ -1,16 +1,32 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public FrameInput input;
+    private PlayerInput playerInput;
+
     void Start()
     {
-        
+        playerInput = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        getInput();
+        float movement = input.movementInput;
+        Debug.Log("Movement Input: " + movement);
     }
+
+    private void getInput()
+    {
+        input = new FrameInput
+        {
+            movementInput = playerInput.actions["Movement"].ReadValue<float>()
+        };
+    }
+}
+
+public struct FrameInput
+{
+    public float movementInput;
 }
