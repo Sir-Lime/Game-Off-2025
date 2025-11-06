@@ -8,14 +8,21 @@ public class PlayerController : MonoBehaviour
     private InputSystem_Actions playerInput; // InputSystem_Actions was auto-generated from the asset InputSystem_Actions as a C# class
     private float horizontal;
 
-    [Header("Player Stats")]
+    [Header("Player Settings")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10f;
 
-    [Header("Ground Information")]
+    [Header("Ground Settings")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] private float groundDist = 5f;
     private bool isGrounded = true;
+
+    [Header("Response Settings")]
+    [SerializeField] private float coyoteTime = 0.2f;
+    private float coyoteTimer;
+    [SerializeField] private float inputBuffer = 0.2f;
+    private float bufferTimer;
+
 
     // Here I'm just creating a new instance of the InputSystem_Actions class 
     // I subscribe the Move method to when the player is using the appropiate keybinds to move
@@ -51,6 +58,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CollisionChecks();
+        if (isGrounded)
+            coyoteTimer = coyoteTime;
+        else
+            coyoteTimer -= Time.deltaTime;
     }
     // When subscribed to an action from InputSystem_Actions, it will be implicitely called with its appropiate parameters whenver the appropiate keybinds are used
     // Then we set the horizontal variable to its corresponding value (in the range [-1, 1] ofc) in the X direction
@@ -61,9 +72,10 @@ public class PlayerController : MonoBehaviour
     
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if(isGrounded)
+        if(coyoteTimer > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            coyoteTimer = 0;
         }
     }
     // This is for visual purposes (visualizing the line that determines if the player is grounded)
