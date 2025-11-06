@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System;
 public class PlayerController : MonoBehaviour
 {
     //public FrameInput input;
@@ -62,6 +63,11 @@ public class PlayerController : MonoBehaviour
             coyoteTimer = coyoteTime;
         else
             coyoteTimer -= Time.deltaTime;
+
+        if (playerInput.Player.Jump.triggered)
+            bufferTimer = inputBuffer;
+        else
+            bufferTimer -= Time.deltaTime;
     }
     // When subscribed to an action from InputSystem_Actions, it will be implicitely called with its appropiate parameters whenver the appropiate keybinds are used
     // Then we set the horizontal variable to its corresponding value (in the range [-1, 1] ofc) in the X direction
@@ -72,7 +78,7 @@ public class PlayerController : MonoBehaviour
     
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if(coyoteTimer > 0)
+        if (coyoteTimer > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             coyoteTimer = 0;
