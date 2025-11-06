@@ -1,14 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     //public FrameInput input;
     private Rigidbody2D rb;
     private InputSystem_Actions playerInput; // InputSystem_Actions was auto-generated from the asset InputSystem_Actions as a C# class
     private float horizontal;
+
     [Header("Player Stats")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10f;
+
+    [Header("Ground Information")]
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] private float groundDist = 5f;
+    private bool isGrounded = true;
 
     // Here I'm just creating a new instance of the InputSystem_Actions class 
     // I subscribe the Move method to when the player is using the appropiate keybinds to move
@@ -18,6 +25,8 @@ public class PlayerController : MonoBehaviour
         playerInput = new InputSystem_Actions(); 
         playerInput.Player.Move.performed += Move;
         playerInput.Player.Move.canceled += func => { horizontal = 0; };
+
+        playerInput.Player.Jump.performed += Jump;
     }
     // For enabling player movement (enables by default)
      void OnEnable() 
@@ -38,11 +47,34 @@ public class PlayerController : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocityY);
     }
+
+    void Update()
+    {
+        CollisionChecks();
+    }
     // When subscribed to an action from InputSystem_Actions, it will be implicitely called with its appropiate parameters whenver the appropiate keybinds are used
     // Then we set the horizontal variable to its corresponding value (in the range [-1, 1] ofc) in the X direction
     public void Move(InputAction.CallbackContext ctx)
     {
         horizontal = ctx.ReadValue<Vector2>().x;
+    }
+    
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+        if(isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
+    // This is for visual purposes (visualizing the line that determines if the player is grounded)
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundDist));
+    }
+    // Called every frame in the Update() method, checking if the player is colliding with a ground layer object
+    private void CollisionChecks()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundDist, groundLayer);
     }
 }
 
