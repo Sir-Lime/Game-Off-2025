@@ -560,7 +560,6 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 6e43093ed48fe647bb238f62da63b807, type: 2}
   logic: {fileID: 1845099018}
   input: {fileID: 1106636408}
-  waveController: {fileID: 11400000, guid: 989ebbc51d8ce4c87bb803194d569ebc, type: 2}
 --- !u!70 &1106636404
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
