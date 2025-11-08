@@ -1,113 +1,240 @@
+    using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
-using System;
-public class PlayerController : MonoBehaviour
+using PlayerController;
+
+public class playerController : MonoBehaviour
 {
-    //public FrameInput input;
-    private Rigidbody2D rb;
-    private InputSystem_Actions playerInput; // InputSystem_Actions was auto-generated from the asset InputSystem_Actions as a C# class
-    private float horizontal;
+#region Initial Variables
 
-    [Header("Player Settings")]
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 10f;
+    /////////////// Components
+    public Rigidbody2D playerRB;
+    public ScriptableStats stats;
+    public LogicScript logic;   
+    private CapsuleCollider2D playerCollider;
 
-    [Header("Ground Settings")]
-    [SerializeField] LayerMask groundLayer;
-    [SerializeField] private float groundDist = 5f;
-    private bool isGrounded = true;
-
-    [Header("Response Settings")]
-    [SerializeField] private float coyoteTime = 0.2f;
-    private float coyoteTimer;
-    [SerializeField] private float inputBuffer = 0.2f;
-    private float bufferTimer;
+    /////////////// Variables
+    [SerializeField] private Vector2 frameVelocity;
+    public FrameInput frameInput;
+    public float facingDir = 1f;
+    private float timeLastGrounded = float.MinValue;
+    private float time;
 
 
-    // Here I'm just creating a new instance of the InputSystem_Actions class 
-    // I subscribe the Move method to when the player is using the appropiate keybinds to move
-    // I subscribe an anonymous or lambda function to when the player stops moving, setting the horizontal movement to 0
-    void Awake()
-    {
-        playerInput = new InputSystem_Actions(); 
-        playerInput.Player.Move.performed += Move;
-        playerInput.Player.Move.canceled += func => { horizontal = 0; };
-
-        playerInput.Player.Jump.performed += Jump;
-    }
-    // For enabling player movement (enables by default)
-     void OnEnable() 
-    {
-        playerInput.Player.Enable();
-    }
-    // For disabling player movement
-    void OnDisable() 
-    {
-        playerInput.Player.Disable();
-    }
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-    // For physics based movement math ✌️
-    void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocityY);
-    }
-
-    void Update()
-    {
-        CollisionChecks();
-        if (isGrounded)
-            coyoteTimer = coyoteTime;
-        else
-            coyoteTimer -= Time.deltaTime;
-
-        if (playerInput.Player.Jump.triggered)
-            bufferTimer = inputBuffer;
-        else
-            bufferTimer -= Time.deltaTime;
-    }
-    // When subscribed to an action from InputSystem_Actions, it will be implicitely called with its appropiate parameters whenver the appropiate keybinds are used
-    // Then we set the horizontal variable to its corresponding value (in the range [-1, 1] ofc) in the X direction
-    public void Move(InputAction.CallbackContext ctx)
-    {
-        horizontal = ctx.ReadValue<Vector2>().x;
-    }
+#endregion
     
-    public void Jump(InputAction.CallbackContext ctx)
+#region Initialization
+    
+    private void Awake()
     {
-        if (coyoteTimer > 0)
+        playerRB = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<CapsuleCollider2D>();
+    }
+    private void Start()
+    {
+    }
+#endregion
+
+#region Update Loops
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if (grounded) timeLastGrounded = time;
+        getInput();
+        HandleDash();
+    }
+    private void FixedUpdate()
+    {
+        CheckCollisions();
+        HandleJump();
+        HandleDirection();
+        ApplyMovement();
+        HandleGravity();
+    }
+#endregion
+
+#region Input Handling
+
+    private void getInput()
+    {
+        frameInput = new FrameInput
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            coyoteTimer = 0;
+            jumpDown = logic.input.actions["Jump"].WasPressedThisFrame(),
+            jumpHeld = logic.input.actions["Jump"].IsPressed(),
+            move = logic.input.actions["Movement"].ReadValue<float>(),
+            dashDown = logic.input.actions["Dash"].IsPressed(),
+        };
+
+        if (frameInput.jumpDown)
+        {
+            jumpToConsume = true;
+            timeJumpPressed = time;
         }
     }
-    // This is for visual purposes (visualizing the line that determines if the player is grounded)
-    private void OnDrawGizmos()
+
+#endregion
+    
+#region Collisions
+
+    private float frameLeftGrounded = float.MinValue;
+    public bool grounded;
+
+    private void CheckCollisions()
     {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundDist));
+        Physics2D.queriesStartInColliders = false;
+
+        bool groundHit = Physics2D.CapsuleCast(playerCollider.bounds.center, playerCollider.size, playerCollider.direction, 0, Vector2.down, stats.GrounderDistance, ~stats.PlayerLayer);
+        groundHit = true;
+        if (!grounded && groundHit)
+        {
+            grounded = true;
+            coyoteUsable = true;
+            bufferedJumpUsable = true;
+            endedJumpEarly = false;
+        }
+        else if (grounded && !groundHit)
+        {
+            grounded = false;
+            frameLeftGrounded = time;
+        }
     }
-    // Called every frame in the Update() method, checking if the player is colliding with a ground layer object
-    private void CollisionChecks()
+
+
+#endregion
+
+#region Jumping
+
+    private bool jumpToConsume;
+    private bool bufferedJumpUsable;
+    private bool endedJumpEarly;
+    private bool coyoteUsable;
+    private float timeJumpPressed;
+    private bool HasBufferedJump => bufferedJumpUsable && time < timeJumpPressed + stats.JumpBuffer;
+    private bool CanUseCoyote => coyoteUsable && !grounded && time < frameLeftGrounded + stats.CoyoteTime;
+
+    private void HandleJump()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundDist, groundLayer);
+        if (!endedJumpEarly && !grounded && !frameInput.jumpHeld && playerRB.linearVelocity.y > 0) endedJumpEarly = true;
+        if (!jumpToConsume && !HasBufferedJump) return;
+        if (!logic.isDashing)
+        {
+            if ((grounded || CanUseCoyote) && jumpToConsume) ExecuteJump();
+        }
+
+        jumpToConsume = false;
     }
+    private void ExecuteJump()
+    {
+        Debug.Log("normal jump");
+        endedJumpEarly = false;
+        timeJumpPressed = 0;
+        bufferedJumpUsable = false;
+        coyoteUsable = false;
+        frameVelocity.y = stats.JumpPower;
+        timeLastGrounded = time;
+    }
+  
+#endregion
+
+#region Horizontal
+
+    #region Movement
+    private void HandleDirection()
+    {
+        if (logic.isDashing)
+            return;
+        if (frameInput.move == 0)
+        {
+            var deceleration = grounded ? stats.GroundDeceleration : stats.AirDeceleration;
+            frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
+        }
+        else
+        {
+            frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.move * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
+            if (frameInput.move < 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                facingDir = -1;
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                facingDir = 1;
+            }
+        }
+    }
+
+    private void ApplyMovement()
+    {
+        playerRB.linearVelocity = frameVelocity;
+    }
+    #endregion
+
+    #region Dash
+
+    private float timeDashPressed = float.MinValue;
+    private void HandleDash()
+    {
+        if (frameInput.dashDown && time - timeDashPressed >= stats.DashCooldown && timeLastGrounded >= timeDashPressed)
+            ExecuteDash();
+
+        if (logic.isDashing)
+        {
+            if (time - timeDashPressed >= stats.DashDuration)
+            {
+                Debug.Log("Stopped dashing");
+                logic.isDashing = false;
+                frameVelocity.x = 0;
+            }
+        }
+    }
+
+    private void ExecuteDash()
+    {
+        if (!logic.isDashing)
+        {
+            Debug.Log("Dash pressed");
+            logic.isDashing = true;
+            frameVelocity.x = stats.MaxDashSpeed * facingDir;
+            timeDashPressed = time;
+        }
+
+    }
+    #endregion
+
+ #endregion
+
+ #region Gravity
+
+    private void HandleGravity()
+    {
+        if (logic.isDashing)
+        {
+            frameVelocity.y = 0;
+            return;
+        }
+        if (grounded && frameVelocity.y <= 0f)
+        {
+            frameVelocity.y = stats.GroundingForce;
+        }
+        else
+        {
+            var inAirGravity = stats.FallAcceleration;
+            if (endedJumpEarly && frameVelocity.y > 0) inAirGravity *= stats.JumpEndEarlyGravityModifier;
+            frameVelocity.y = Mathf.MoveTowards(frameVelocity.y, -stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
+        }
+    }
+
+#endregion
+
 }
 
-   /* private void GetInput()
-    {
-        input = new FrameInput
-        {
-            movementInput = playerInput.actions["Movement"].ReadValue<float>()
-        };
-    }
-}*/
-
-/*public struct FrameInput
+public struct FrameInput
 {
-    public float movementInput;
+    public bool jumpDown;
+    public bool jumpHeld;
+    public bool dashDown;
+    public float move;
+}
 
-
-}*/
