@@ -43,6 +43,7 @@ public class playerController : MonoBehaviour
         if (grounded) timeLastGrounded = time;
         getInput();
         HandleDash();
+        HandleJump();   
     }
     private void FixedUpdate()
     {
@@ -82,10 +83,12 @@ public class playerController : MonoBehaviour
 
     private void CheckCollisions()
     {
-        Physics2D.queriesStartInColliders = false;
-
         bool groundHit = Physics2D.CapsuleCast(playerCollider.bounds.center, playerCollider.size, playerCollider.direction, 0, Vector2.down, stats.GrounderDistance, ~stats.PlayerLayer);
-        groundHit = true;
+        Color color = grounded ? Color.green : Color.red;
+        Debug.DrawRay(playerCollider.bounds.center, Vector2.down * stats.GrounderDistance, color);
+
+        if (groundHit) Debug.Log("Grounded");
+        else Debug.Log("Not Grounded");
         if (!grounded && groundHit)
         {
             grounded = true;

@@ -741,7 +741,7 @@ CapsuleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.023760274}
   m_Size: {x: 1, y: 0.9524834}
-  m_Direction: 0
+  m_Direction: 1
 --- !u!50 &1902922245
 Rigidbody2D:
   serializedVersion: 5
