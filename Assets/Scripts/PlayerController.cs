@@ -11,6 +11,8 @@ namespace playerController
         [SerializeField] private ScriptableStats stats;
         [SerializeField] private LogicScript logic;
         [SerializeField] private PlayerInput input;
+        [SerializeField] private Wave jumpWave;
+        [SerializeField] private Wave dashWave;
         private Rigidbody2D playerRB;
         private CapsuleCollider2D playerCol;
         private FrameInput frameInput;
@@ -68,7 +70,6 @@ namespace playerController
             frameInput = new FrameInput
             {
                 JumpDown = input.actions["Jump"].WasPressedThisFrame(),
-                JumpHeld = input.actions["Jump"].IsPressed(),
                 Move = input.actions["Move"].ReadValue<Vector2>(),
             };
 
@@ -106,7 +107,6 @@ namespace playerController
                 grounded = true;
                 coyoteUsable = true;
                 bufferedJumpUsable = true;
-                endedJumpEarly = false;
                 GroundedChanged?.Invoke(true, Mathf.Abs(frameVelocity.y));
             }
             // Left the Ground
@@ -117,7 +117,7 @@ namespace playerController
                 GroundedChanged?.Invoke(false, 0);
             }
 
-                Physics2D.queriesStartInColliders = cachedQueryStartInColliders;
+            Physics2D.queriesStartInColliders = cachedQueryStartInColliders;
         }
 
         #endregion
@@ -143,7 +143,6 @@ namespace playerController
 
         private bool jumpToConsume;
         private bool bufferedJumpUsable;
-        private bool endedJumpEarly;
         private bool coyoteUsable;
         private float timeJumpWasPressed;
 
@@ -152,8 +151,6 @@ namespace playerController
 
         private void HandleJump()
         {
-            if (!endedJumpEarly && !grounded && !frameInput.JumpHeld && playerRB.linearVelocity.y > 0) endedJumpEarly = true;
-
             if (!jumpToConsume && !HasBufferedJump) return;
 
             if (grounded || CanUseCoyote) ExecuteJump();
@@ -163,11 +160,10 @@ namespace playerController
 
         private void ExecuteJump()
         {
-            endedJumpEarly = false;
             timeJumpWasPressed = 0;
             bufferedJumpUsable = false;
             coyoteUsable = false;
-            frameVelocity.y = stats.JumpPower;
+            frameVelocity.y = stats.JumpPower + (Mathf.Abs(jumpWave.WaveValue) / stats.jumpScale);
             Jumped?.Invoke();
         }
 
@@ -183,9 +179,7 @@ namespace playerController
             }
             else
             {
-                var inAirGravity = stats.FallAcceleration;
-                if (endedJumpEarly && frameVelocity.y > 0) inAirGravity *= stats.JumpEndEarlyGravityModifier;
-                frameVelocity.y = Mathf.MoveTowards(frameVelocity.y, -stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
+                frameVelocity.y = Mathf.MoveTowards(frameVelocity.y, -stats.MaxFallSpeed, stats.FallAcceleration * Time.fixedDeltaTime);
             }
         }
 
@@ -199,8 +193,6 @@ namespace playerController
     public struct FrameInput
     {
         public bool JumpDown;
-        public bool JumpHeld;
         public Vector2 Move;
     }
-
 }

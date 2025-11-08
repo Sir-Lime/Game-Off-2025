@@ -35,8 +35,12 @@ namespace playerController
         [Tooltip("The detection distance for grounding and roof detection"), Range(0f, 0.5f)]
         public float GrounderDistance = 0.05f;
 
-        [Header("JUMP")] [Tooltip("The immediate velocity applied when jumping")]
+        [Header("JUMP")]
+        [Tooltip("The immediate velocity applied when jumping")]
         public float JumpPower = 36;
+        
+        [Tooltip("The scaling intensity according to a Wave function that is applied whenever a player jumps")]
+        public float jumpScale = 25;
 
         [Tooltip("The maximum vertical movement speed")]
         public float MaxFallSpeed = 40;
