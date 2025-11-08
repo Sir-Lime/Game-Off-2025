@@ -6,6 +6,7 @@ namespace playerController
 {
     public class PlayerController : MonoBehaviour
     {
+        //this is a comment I made so I can push the script again
         #region Initial Variables
         [SerializeField] private ScriptableStats stats;
         [SerializeField] private LogicScript logic;
