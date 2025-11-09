@@ -6,7 +6,6 @@ namespace playerController
 {
     public class PlayerController : MonoBehaviour
     {
-        //this is a comment I made so I can push the script again
         #region Initial Variables
         [SerializeField] private ScriptableStats stats;
         [SerializeField] private LogicScript logic;
@@ -23,7 +22,6 @@ namespace playerController
 
         public Vector2 FrameInput => frameInput.Move;
         public event Action<bool, float> GroundedChanged;
-        public event Action Jumped;
 
         #endregion
 
@@ -47,16 +45,15 @@ namespace playerController
         {
             time += Time.deltaTime;
             GetInput();
+            HandleDash();
         }
 
         private void FixedUpdate()
         {
             CheckCollisions();
-
             HandleJump();
             HandleDirection();
             HandleGravity();
-            
             ApplyMovement();
         }
         #endregion
@@ -68,7 +65,7 @@ namespace playerController
             frameInput = new FrameInput
             {
                 JumpDown = input.actions["Jump"].WasPressedThisFrame(),
-                JumpHeld = input.actions["Jump"].IsPressed(),
+                dashDown = input.actions["Dash"].WasPressedThisFrame(),
                 Move = input.actions["Move"].ReadValue<Vector2>(),
             };
 
@@ -91,6 +88,7 @@ namespace playerController
         
         private float frameleftgrounded = float.MinValue;
         private bool grounded;
+        private float timeLastGrounded = float.MinValue;
 
         private void CheckCollisions()
         {
@@ -100,16 +98,14 @@ namespace playerController
             bool ceilingHit = Physics2D.CapsuleCast(playerCol.bounds.center, playerCol.size, playerCol.direction, 0, Vector2.up, stats.GrounderDistance, ~stats.PlayerLayer);
 
             if (ceilingHit) frameVelocity.y = Mathf.Min(0, frameVelocity.y);
-
+            if (grounded) timeLastGrounded = time;
             if (!grounded && groundHit)
             {
                 grounded = true;
                 coyoteUsable = true;
                 bufferedJumpUsable = true;
-                endedJumpEarly = false;
                 GroundedChanged?.Invoke(true, Mathf.Abs(frameVelocity.y));
             }
-            // Left the Ground
             else if (grounded && !groundHit)
             {
                 grounded = false;
@@ -117,12 +113,14 @@ namespace playerController
                 GroundedChanged?.Invoke(false, 0);
             }
 
-                Physics2D.queriesStartInColliders = cachedQueryStartInColliders;
+            Physics2D.queriesStartInColliders = cachedQueryStartInColliders;
         }
 
         #endregion
 
         #region Horizontal
+
+        private int facingDir = 1;
 
         private void HandleDirection()
         {
@@ -131,8 +129,14 @@ namespace playerController
                 var deceleration = grounded ? stats.GroundDeceleration : stats.AirDeceleration;
                 frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
             }
+            else if (frameInput.Move.x < 0)
+            {
+                facingDir = -1;
+                frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
+            }
             else
             {
+                facingDir = 1;  
                 frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
             }
         }
@@ -143,7 +147,6 @@ namespace playerController
 
         private bool jumpToConsume;
         private bool bufferedJumpUsable;
-        private bool endedJumpEarly;
         private bool coyoteUsable;
         private float timeJumpWasPressed;
 
@@ -152,8 +155,6 @@ namespace playerController
 
         private void HandleJump()
         {
-            if (!endedJumpEarly && !grounded && !frameInput.JumpHeld && playerRB.linearVelocity.y > 0) endedJumpEarly = true;
-
             if (!jumpToConsume && !HasBufferedJump) return;
 
             if (grounded || CanUseCoyote) ExecuteJump();
@@ -163,12 +164,11 @@ namespace playerController
 
         private void ExecuteJump()
         {
-            endedJumpEarly = false;
             timeJumpWasPressed = 0;
             bufferedJumpUsable = false;
             coyoteUsable = false;
             frameVelocity.y = stats.JumpPower;
-            Jumped?.Invoke();
+            timeLastGrounded = time;
         }
 
         #endregion
@@ -183,24 +183,57 @@ namespace playerController
             }
             else
             {
-                var inAirGravity = stats.FallAcceleration;
-                if (endedJumpEarly && frameVelocity.y > 0) inAirGravity *= stats.JumpEndEarlyGravityModifier;
-                frameVelocity.y = Mathf.MoveTowards(frameVelocity.y, -stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
+                frameVelocity.y = Mathf.MoveTowards(frameVelocity.y, -stats.MaxFallSpeed, stats.FallAcceleration * Time.fixedDeltaTime);
             }
         }
 
         #endregion
 
+        #region Dash
+
+        private float timeDashPressed = float.MinValue;
+        private bool isDashing = false;
+        private void HandleDash()
+        {
+            if (frameInput.dashDown && time - timeDashPressed >= stats.DashCooldown && timeLastGrounded >= timeDashPressed)
+                ExecuteDash();
+
+            if (isDashing)
+            {
+                if (time - timeDashPressed >= stats.DashDuration)
+                {
+                    isDashing = false;
+                    frameVelocity.x = 0;
+                }
+                else frameVelocity.y = -stats.GroundingForce;
+            }
+        }
+
+        private void ExecuteDash()
+        {
+            if (!isDashing)
+            {
+                isDashing = true;
+                frameVelocity.x = stats.MaxDashSpeed * facingDir;
+                timeDashPressed = time;
+                frameVelocity.y = -stats.GroundingForce;
+            }
+
+        }
+        
+        #endregion
+    
         #region Movement
+
         private void ApplyMovement() => playerRB.linearVelocity = frameVelocity;
+
         #endregion
     }
 
     public struct FrameInput
     {
         public bool JumpDown;
-        public bool JumpHeld;
         public Vector2 Move;
+        public bool dashDown;
     }
-
 }

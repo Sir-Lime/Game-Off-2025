@@ -52,5 +52,13 @@ namespace playerController
 
         [Tooltip("The amount of time we buffer a jump. This allows jump input before actually hitting the ground")]
         public float JumpBuffer = .2f;
+
+        [Header("DASH")]
+        [Tooltip("The velocity applied when dashing")]
+        public float MaxDashSpeed = 32;
+        [Tooltip("The duration of the player's dash")]
+        public float DashDuration = 0.5f;
+        [Tooltip("The duration of the player's dash cooldown (including the dash itself)")]
+        public float DashCooldown = 0.9f;
     }
 }
