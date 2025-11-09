@@ -24,12 +24,16 @@ MonoBehaviour:
   AirDeceleration: 30
   GroundingForce: -3
   GrounderDistance: 0.05
-  JumpPower: 30
+  MaxJumpPower: 36
+  MinJumpPower: 20
   MaxFallSpeed: 50
+  jumpScale: 1
   FallAcceleration: 110
   JumpEndEarlyGravityModifier: 3
   CoyoteTime: 0.06
   JumpBuffer: 0.1
-  MaxDashSpeed: 50
+  MaxDashSpeed: 23
+  MinDashSpeed: 15
+  dashScale: 1.2
   DashDuration: 0.12
   DashCooldown: 1.5

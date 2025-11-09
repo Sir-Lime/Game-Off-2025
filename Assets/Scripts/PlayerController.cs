@@ -40,6 +40,8 @@ namespace playerController
             time += Time.deltaTime;
             GetInput();
             HandleDash();
+            jumpWave.SetWaveSpeed(0.5f); dashWave.SetWaveSpeed(0.5f);
+            Debug.Log(jumpWave.GetWaveValue(0) + " " + dashWave.GetWaveValue(1));
         }
 
         private void FixedUpdate()
@@ -159,7 +161,7 @@ namespace playerController
             timeJumpWasPressed = 0;
             bufferedJumpUsable = false;
             coyoteUsable = false;
-            frameVelocity.y = stats.JumpPower + (Mathf.Abs(jumpWave.WaveValue) / stats.jumpScale);
+            frameVelocity.y = stats.MinJumpPower + stats.MaxJumpPower * (jumpWave.GetWaveValue(0) / stats.jumpScale);
             timeLastGrounded = time;
         }
 
@@ -206,7 +208,7 @@ namespace playerController
             if (!isDashing)
             {
                 isDashing = true;
-                frameVelocity.x = stats.MaxDashSpeed * facingDir;
+                frameVelocity.x = (stats.MinDashSpeed + stats.MaxDashSpeed * dashWave.GetWaveValue(1) / stats.dashScale) * facingDir;
                 timeDashPressed = time;
                 frameVelocity.y = -stats.GroundingForce;
             }

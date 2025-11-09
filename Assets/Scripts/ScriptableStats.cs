@@ -35,9 +35,13 @@ namespace playerController
         [Tooltip("The detection distance for grounding and roof detection"), Range(0f, 0.5f)]
         public float GrounderDistance = 0.05f;
 
-        [Header("JUMP")] [Tooltip("The immediate velocity applied when jumping")]
-        public float JumpPower = 36;
+        [Header("JUMP")]
+        [Tooltip("The maximum velocity applied when jumping")]
+        public float MaxJumpPower = 36;
 
+        [Tooltip("The minimal jump power when the wave function is equal to 0")]
+        public float MinJumpPower = 20;
+        
         [Tooltip("The maximum vertical movement speed")]
         public float MaxFallSpeed = 40;
         [Tooltip("The scaling intensity according to a Wave function that is applied whenever a player jumps")]
@@ -55,8 +59,13 @@ namespace playerController
         public float JumpBuffer = .2f;
 
         [Header("DASH")]
-        [Tooltip("The velocity applied when dashing")]
+        [Tooltip("The maximum velocity applied when dashing")]
         public float MaxDashSpeed = 32;
+
+        [Tooltip("The minimum velocity applied when dashing")]
+        public float MinDashSpeed = 32;
+        [Tooltip("The scaling intensity according to a Wave function that is applied whenever a player dashes")]
+        public float dashScale = 25;
         [Tooltip("The duration of the player's dash")]
         public float DashDuration = 0.5f;
         [Tooltip("The duration of the player's dash cooldown (including the dash itself)")]
