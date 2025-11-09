@@ -40,7 +40,7 @@ namespace playerController
             time += Time.deltaTime;
             GetInput();
             HandleDash();
-            jumpWave.SetWaveSpeed(0.5f); dashWave.SetWaveSpeed(0.5f);
+            //jumpWave.SetWaveSpeed(0.5f); dashWave.SetWaveSpeed(0.5f);
             //Debug.Log(jumpWave.GetWaveValue(0) + " " + dashWave.GetWaveValue(1));
         }
 
