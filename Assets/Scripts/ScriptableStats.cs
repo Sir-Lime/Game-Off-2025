@@ -40,7 +40,8 @@ namespace playerController
 
         [Tooltip("The maximum vertical movement speed")]
         public float MaxFallSpeed = 40;
-
+        [Tooltip("The scaling intensity according to a Wave function that is applied whenever a player jumps")]
+        public float jumpScale = 25;
         [Tooltip("The player's capacity to gain fall speed. a.k.a. In Air Gravity")]
         public float FallAcceleration = 110;
 

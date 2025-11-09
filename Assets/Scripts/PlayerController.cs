@@ -10,6 +10,8 @@ namespace playerController
         [SerializeField] private ScriptableStats stats;
         [SerializeField] private LogicScript logic;
         [SerializeField] private PlayerInput input;
+        [SerializeField] private Wave jumpWave;
+        [SerializeField] private Wave dashWave;
         private Rigidbody2D playerRB;
         private CapsuleCollider2D playerCol;
         private FrameInput frameInput;
@@ -157,7 +159,7 @@ namespace playerController
             timeJumpWasPressed = 0;
             bufferedJumpUsable = false;
             coyoteUsable = false;
-            frameVelocity.y = stats.JumpPower;
+            frameVelocity.y = stats.JumpPower + (Mathf.Abs(jumpWave.WaveValue) / stats.jumpScale);
             timeLastGrounded = time;
         }
 
