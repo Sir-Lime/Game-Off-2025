@@ -41,7 +41,7 @@ namespace playerController
             GetInput();
             HandleDash();
             jumpWave.SetWaveSpeed(0.5f); dashWave.SetWaveSpeed(0.5f);
-            Debug.Log(jumpWave.GetWaveValue(0) + " " + dashWave.GetWaveValue(1));
+            //Debug.Log(jumpWave.GetWaveValue(0) + " " + dashWave.GetWaveValue(1));
         }
 
         private void FixedUpdate()
