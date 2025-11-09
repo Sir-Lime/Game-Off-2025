@@ -18,14 +18,6 @@ namespace playerController
         private bool cachedQueryStartInColliders;
         #endregion
 
-        #region Interface
-
-        public Vector2 FrameInput => frameInput.Move;
-        public event Action<bool, float> GroundedChanged;
-
-        #endregion
-
-
         #region Initialization
         private void Awake()
         {
@@ -104,13 +96,11 @@ namespace playerController
                 grounded = true;
                 coyoteUsable = true;
                 bufferedJumpUsable = true;
-                GroundedChanged?.Invoke(true, Mathf.Abs(frameVelocity.y));
             }
             else if (grounded && !groundHit)
             {
                 grounded = false;
                 frameleftgrounded = time;
-                GroundedChanged?.Invoke(false, 0);
             }
 
             Physics2D.queriesStartInColliders = cachedQueryStartInColliders;
