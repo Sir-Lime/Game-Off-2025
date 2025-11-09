@@ -973,7 +973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.9900017, y: -4.63}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 56, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203812416
@@ -1068,6 +1068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveScript: {fileID: 1845099020}
+  cst: 56
 --- !u!114 &1275559908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,7 +1257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.38000107, y: -5.37}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 56, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1812048032
