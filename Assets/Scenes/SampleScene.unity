@@ -1490,7 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValue: -250
   maxValue: 250
-  movementSpeed: 1
+  movementSpeed: 0.5
   timeElapsed: 0
 --- !u!114 &1845099020
 MonoBehaviour:
@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValue: -250
   maxValue: 250
-  movementSpeed: 1
+  movementSpeed: 2
   timeElapsed: 0
 --- !u!1 &1853678721
 GameObject:
