@@ -40,8 +40,7 @@ namespace playerController
             time += Time.deltaTime;
             GetInput();
             HandleDash();
-            //jumpWave.SetWaveSpeed(0.5f); dashWave.SetWaveSpeed(0.5f);
-            //Debug.Log(jumpWave.GetWaveValue(0) + " " + dashWave.GetWaveValue(1));
+            Debug.Log(Mathf.Round(jumpWave.GetWaveValue(0)*10)/10 + " " +  Mathf.Round(dashWave.GetWaveValue(1)*10)/10);
         }
 
         private void FixedUpdate()
@@ -126,11 +125,13 @@ namespace playerController
             else if (frameInput.Move.x < 0)
             {
                 facingDir = -1;
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
             }
             else
             {
                 facingDir = 1;  
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
             }
         }
@@ -161,7 +162,7 @@ namespace playerController
             timeJumpWasPressed = 0;
             bufferedJumpUsable = false;
             coyoteUsable = false;
-            frameVelocity.y = stats.MinJumpPower + stats.MaxJumpPower * (jumpWave.GetWaveValue(0) / stats.jumpScale);
+            frameVelocity.y = (stats.minJumpPower + stats.maxJumpPower * (jumpWave.GetWaveValue(0))) / stats.jumpPower;
             timeLastGrounded = time;
         }
 
@@ -208,7 +209,7 @@ namespace playerController
             if (!isDashing)
             {
                 isDashing = true;
-                frameVelocity.x = (stats.MinDashSpeed + stats.MaxDashSpeed * dashWave.GetWaveValue(1) / stats.dashScale) * facingDir;
+                frameVelocity.x = (stats.minDashSpeed + stats.maxDashSpeed * dashWave.GetWaveValue(1)) / stats.dashSpeed * facingDir;
                 timeDashPressed = time;
                 frameVelocity.y = -stats.GroundingForce;
             }

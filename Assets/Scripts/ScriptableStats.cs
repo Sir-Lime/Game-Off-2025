@@ -37,15 +37,15 @@ namespace playerController
 
         [Header("JUMP")]
         [Tooltip("The maximum velocity applied when jumping")]
-        public float MaxJumpPower = 36;
+        public float maxJumpPower = 36;
 
         [Tooltip("The minimal jump power when the wave function is equal to 0")]
-        public float MinJumpPower = 20;
-        
+        public float minJumpPower = 20;
+        [Tooltip("The scaling intensity according to a Wave function that is applied whenever a player jumps")]
+        public float jumpPower = 25;
         [Tooltip("The maximum vertical movement speed")]
         public float MaxFallSpeed = 40;
-        [Tooltip("The scaling intensity according to a Wave function that is applied whenever a player jumps")]
-        public float jumpScale = 25;
+
         [Tooltip("The player's capacity to gain fall speed. a.k.a. In Air Gravity")]
         public float FallAcceleration = 110;
 
@@ -60,12 +60,12 @@ namespace playerController
 
         [Header("DASH")]
         [Tooltip("The maximum velocity applied when dashing")]
-        public float MaxDashSpeed = 32;
+        public float maxDashSpeed = 32;
 
         [Tooltip("The minimum velocity applied when dashing")]
-        public float MinDashSpeed = 32;
+        public float minDashSpeed = 32;
         [Tooltip("The scaling intensity according to a Wave function that is applied whenever a player dashes")]
-        public float dashScale = 25;
+        public float dashSpeed = 25;
         [Tooltip("The duration of the player's dash")]
         public float DashDuration = 0.5f;
         [Tooltip("The duration of the player's dash cooldown (including the dash itself)")]

@@ -14,14 +14,13 @@ public class Wave : MonoBehaviour
         timeElapsed += Time.deltaTime * movementSpeed;
         if (timeElapsed > (2*Mathf.PI)) timeElapsed -= (2*Mathf.PI); 
         GetWaveValue(0);
-        Debug.Log(waveValue + " " + GetWaveValue(0));
     }
     public float GetWaveValue(int waveType)
     {
         float amplitude = (maxValue - minValue) / 2.0f;
         float midPoint = (maxValue + minValue) / 2.0f;
         waveValue = 0f;
-        switch (waveType)   ////// just made this a switch for cool code purposes, we will probably have more wave types so switch makes sense
+        switch (waveType)  
         {
             case 0:
                 waveValue = midPoint + amplitude * Mathf.Sin(timeElapsed);
