@@ -40,7 +40,7 @@ namespace playerController
             time += Time.deltaTime;
             GetInput();
             HandleDash();
-            Debug.Log(Mathf.Round(jumpWave.GetWaveValue(0)*10)/10 + " " +  Mathf.Round(dashWave.GetWaveValue(1)*10)/10);
+            //Debug.Log(Mathf.Round(jumpWave.GetWaveValue(0)*10)/10 + " " +  Mathf.Round(dashWave.GetWaveValue(1)*10)/10);
         }
 
         private void FixedUpdate()
