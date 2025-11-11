@@ -13,9 +13,7 @@ public class mainMenuUI : MonoBehaviour
     [SerializeField] private Slider SFXslider; 
 
     void Start() {
-        Debug.Log("START " + PlayerPrefs.GetFloat("MASTER")); 
         if (!PlayerPrefs.HasKey("MASTER")) {
-            
             PlayerPrefs.SetFloat("MASTER", 1);
             PlayerPrefs.SetFloat("SFX", 1);
             PlayerPrefs.SetFloat("MUSIC", 1);
