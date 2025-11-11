@@ -5,7 +5,6 @@ public class Wave : MonoBehaviour
 {
     [SerializeField] private float minValue = -250;
     [SerializeField] private float maxValue = 250;
-    [SerializeField] private LogicScript logic;
     public float movementSpeed = 1;   
     public float timeElapsed = 0f;
     private float waveValue;
@@ -15,8 +14,6 @@ public class Wave : MonoBehaviour
         timeElapsed += Time.deltaTime * movementSpeed;
         if (timeElapsed > (2*Mathf.PI)) timeElapsed -= (2*Mathf.PI); 
         GetWaveValue(0);
-        if (logic.ineractableObjects[50]) movementSpeed = 1; // just trying out if the interactable buttons prefab works
-        // feel free to delete it 
     }
     public float GetWaveValue(int waveType)
     {
