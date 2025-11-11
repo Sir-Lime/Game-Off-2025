@@ -29,7 +29,7 @@ public class Level : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+           //DontDestroyOnLoad(gameObject);
         }
     }
 

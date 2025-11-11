@@ -187,7 +187,7 @@ namespace playerController
         #region Dash
 
         private float timeDashPressed = float.MinValue;
-        private bool isDashing = false;
+        public bool isDashing = false;
         private void HandleDash()
         {
             if (frameInput.dashDown && time - timeDashPressed >= stats.DashCooldown && timeLastGrounded >= timeDashPressed)
