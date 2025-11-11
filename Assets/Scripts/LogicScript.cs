@@ -5,14 +5,15 @@ using UnityEngine.InputSystem.UI;
 
 public class LogicScript : MonoBehaviour
 {
-    void Awake()
-    {
+    public bool[] ineractableObjects = new bool[100];
+    void Awake() {
+        
     }
-    void Start()
-    {
+    void Start() {
+        int i;
+        for (i = 0; i < 100; ++i) ineractableObjects[i] = false;
     }
 
-    void Update()
-    {
+    void Update() {
     }
 }
