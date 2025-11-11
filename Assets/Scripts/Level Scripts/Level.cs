@@ -62,14 +62,20 @@ public class Level : MonoBehaviour
     
     IEnumerator Respawn()
     {
-        player.SetActive(false);
-        player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
+
+        playerRb.constraints = RigidbodyConstraints2D.FreezePositionX;
+        playerSprite.enabled = false;
         
         yield return new WaitForSeconds(respawnTime);
 
         respawnTransition.SetTrigger("Respawn");
         player.transform.position = spawnPoint.transform.position;
-        player.SetActive(true);
+        
+        playerRb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+        playerSprite.enabled = true;
+         
         respawnPanel.SetActive(false);   
     }
 }
