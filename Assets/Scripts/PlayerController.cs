@@ -25,7 +25,6 @@ namespace playerController
         {
             playerRB = GetComponent<Rigidbody2D>();
             playerCol = GetComponent<CapsuleCollider2D>();
-
             cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
 
@@ -40,7 +39,6 @@ namespace playerController
             time += Time.deltaTime;
             GetInput();
             HandleDash();
-            //Debug.Log(Mathf.Round(jumpWave.GetWaveValue(0)*10)/10 + " " +  Mathf.Round(dashWave.GetWaveValue(1)*10)/10);
         }
 
         private void FixedUpdate()
@@ -162,7 +160,7 @@ namespace playerController
             timeJumpWasPressed = 0;
             bufferedJumpUsable = false;
             coyoteUsable = false;
-            frameVelocity.y = (stats.minJumpPower + stats.maxJumpPower * (jumpWave.GetWaveValue(0))) / stats.jumpPower;
+            frameVelocity.y = (stats.minJumpPower + stats.maxJumpPower * (jumpWave.GetWaveValue())) / stats.jumpPower;
             timeLastGrounded = time;
         }
 
@@ -209,7 +207,7 @@ namespace playerController
             if (!isDashing)
             {
                 isDashing = true;
-                frameVelocity.x = (stats.minDashSpeed + stats.maxDashSpeed * dashWave.GetWaveValue(1)) / stats.dashSpeed * facingDir;
+                frameVelocity.x = (stats.minDashSpeed + stats.maxDashSpeed * dashWave.GetWaveValue() / stats.dashSpeed * facingDir);
                 timeDashPressed = time;
                 frameVelocity.y = -stats.GroundingForce;
             }

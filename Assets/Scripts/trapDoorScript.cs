@@ -1,25 +1,17 @@
 using UnityEngine;
 
-public class trapDoorScript : MonoBehaviour {
+public class Doo : MonoBehaviour {
 
-    [SerializeField] private bool bo = false; // @lime feel free to delete it when you integrate your activators thingy
-    private BoxCollider2D collider;
-    private float time = 0;
-    [SerializeField] private float countDown = 3;
-    private float lastActivated;
+    [SerializeField] private GameObject Activator;
+    private BoxCollider2D col;
 
     void Start() {
-        collider = GetComponent<BoxCollider2D>();
-        lastActivated = -countDown;
+        col = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update() {
-        time += Time.deltaTime;
-        if (bo && (time - lastActivated) >= countDown) {
-            if (collider.isTrigger) collider.isTrigger = false;
-            else collider.isTrigger = true;
-            lastActivated = time;
-        }
+    void Update() 
+    {
+        if (Activator.CompareTag("Activated") ) col.enabled = false;
+        else if (Activator.CompareTag("Deactivated")) col.enabled = true;
     }
 }
