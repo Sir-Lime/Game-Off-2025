@@ -3835,10 +3835,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.9166667
-    y: -0.06481481
-    width: 0.16666667
-    height: 0.16666666
+    x: 0.07395834
+    y: 0.78148144
+    width: 0.33333334
+    height: 0.3333333
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -4168,6 +4168,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5062679287910975750, guid: 9fea54c9683e8c736b8821ae7cd53915, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062679287910975750, guid: 9fea54c9683e8c736b8821ae7cd53915, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4280,6 +4288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 2016678643}
+  teleportCooldown: 5
 --- !u!212 &869891662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6362,6 +6371,7 @@ GameObject:
   - component: {fileID: 1876677268}
   - component: {fileID: 1876677267}
   - component: {fileID: 1876677273}
+  - component: {fileID: 1876677274}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6533,7 +6543,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5b4b5b19e2c44869428410e958db0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionDistance: 3
+  input: {fileID: 1876677274}
+  interactionDistance: 1
+--- !u!114 &1876677274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876677266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: fd040e32da09b784a86cefda751f5248, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player Controls
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1892212567
 GameObject:
   m_ObjectHideFlags: 0
@@ -7002,6 +7043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 869891660}
+  teleportCooldown: 5
 --- !u!212 &2016678645
 SpriteRenderer:
   m_ObjectHideFlags: 0
