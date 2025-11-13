@@ -39,6 +39,7 @@ namespace playerController
             time += Time.deltaTime;
             GetInput();
             HandleDash();
+            Debug.Log(jumpWave.GetWaveValue());
         }
 
         private void FixedUpdate()

@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class Wave : MonoBehaviour
 {
-    public enum WaveType {Sin,Cos,NegativeSin}
+    public enum WaveType {Sin,Cos,Tan, Cot, NegativeSin, NegativeCos, NegativeTan, NegativeCot}
 
-    [SerializeField] private float minValue = -250f;
-    [SerializeField] private float maxValue = 250f;
-    [SerializeField] private UnityEngine.UI.Image jumpImage;
-    [SerializeField] private UnityEngine.UI.Image dashImage;
-    [SerializeField] private Sprite sin, cos, neg_sin;
+
+    [SerializeField] private UnityEngine.UI.Image jumpImage, dashImage;
+    [SerializeField] private Sprite sin, cos, tan, cot, neg_sin, neg_cos, neg_tan, neg_cot;
 
     [SerializeField] public WaveType waveType = WaveType.Sin;
 
     public float movementSpeed = 1f;
     public float timeElapsed = 0f;
-    private float waveValue;
-
+    public float waveValue;
+    public float normalizedWave;
+    private float minValue = -250f;
+    private float maxValue = 250f;
     void Update()
     {
         timeElapsed += Time.deltaTime * movementSpeed;
@@ -35,16 +35,39 @@ public class Wave : MonoBehaviour
         {
             case WaveType.Sin:
                 waveValue = midPoint + amplitude * Mathf.Sin(timeElapsed);
+                maxValue = 250f; minValue = -250f;
                 break;
             case WaveType.Cos:
                 waveValue = midPoint + amplitude * Mathf.Cos(timeElapsed);
+                maxValue = 250f; minValue = -250f;
+                break;
+            case WaveType.Tan:
+                waveValue = midPoint + amplitude * Mathf.Tan(timeElapsed);
+                maxValue = 10000000f; minValue = -10000000f;
+                break;
+            case WaveType.Cot:
+                waveValue = midPoint + amplitude * -Mathf.Tan(timeElapsed - (Mathf.PI / 2));
+                maxValue = 10000000f; minValue = -10000000f;
                 break;
             case WaveType.NegativeSin:
-                waveValue = midPoint + amplitude * -Mathf.Sin(timeElapsed);
+                waveValue = midPoint + amplitude * Mathf.Sin(timeElapsed) * -1;
+                maxValue = 250f; minValue = -250f;
+                break;
+            case WaveType.NegativeCos:
+                waveValue = midPoint + amplitude * Mathf.Cos(timeElapsed) * -1;
+                maxValue = 250f; minValue = -250f;
+                break;
+            case WaveType.NegativeTan:
+                waveValue = midPoint + amplitude * Mathf.Tan(timeElapsed) * -1;
+                maxValue = 10000000f; minValue = -10000000f;
+                break;
+            case WaveType.NegativeCot:
+                waveValue = midPoint + amplitude * -Mathf.Tan(timeElapsed - (Mathf.PI / 2)) * -1;
+                maxValue = 10000000f; minValue = -10000000f;
                 break;
         }
-
-        float normalizedWave = Mathf.InverseLerp(-250f, 250f, waveValue);
+    
+        normalizedWave = Mathf.InverseLerp(minValue, maxValue, waveValue);
         return normalizedWave;
     }
 
@@ -60,8 +83,23 @@ public class Wave : MonoBehaviour
             case WaveType.Cos:
                 jumpImage.sprite = cos;
                 break;
+            case WaveType.Tan:
+                jumpImage.sprite = tan;
+                break;
+            case WaveType.Cot:
+                jumpImage.sprite = cot;
+                break;
             case WaveType.NegativeSin:
                 jumpImage.sprite = neg_sin;
+                break;
+            case WaveType.NegativeCos:
+                jumpImage.sprite = neg_cos;
+                break;
+            case WaveType.NegativeTan:
+                jumpImage.sprite = neg_tan;
+                break;
+            case WaveType.NegativeCot:
+                jumpImage.sprite = neg_cot;
                 break;
         }
     }
@@ -78,8 +116,23 @@ public class Wave : MonoBehaviour
             case WaveType.Cos:
                 dashImage.sprite = cos;
                 break;
+            case WaveType.Tan:
+                dashImage.sprite = tan;
+                break;
+            case WaveType.Cot:
+                dashImage.sprite = cot;
+                break;
             case WaveType.NegativeSin:
                 dashImage.sprite = neg_sin;
+                break;
+            case WaveType.NegativeCos:
+                dashImage.sprite = neg_cos;
+                break;
+            case WaveType.NegativeTan:
+                dashImage.sprite = neg_tan;
+                break;
+            case WaveType.NegativeCot:
+                dashImage.sprite = neg_cot;
                 break;
         }
     }

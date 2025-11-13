@@ -3,13 +3,11 @@ using UnityEngine;
 public class waveModifierScript : MonoBehaviour
 {
     [SerializeField] private GameObject[] Activators;
-    [SerializeField] private Wave jumpWave;
-    [SerializeField] private Wave dashWave;
-    [SerializeField] private float jumpWaveModifier;
-    [SerializeField] private float dashWaveModifier;
-    [SerializeField] private Wave.WaveType jumpWaveType, dashWaveType;
+    [SerializeField] private Wave jumpWave, dashWave;
+    [SerializeField] private float jumpWaveSpeedNew = 1, dashWaveSpeedNew = 1;
+    [SerializeField] private Wave.WaveType jumpWaveType = Wave.WaveType.Sin, dashWaveType = Wave.WaveType.Cos;
     private Wave.WaveType jumpWaveTypeBefore, dashWaveTypeBefore;
-
+    private float jumpWaveSpeedBefore, dashWaveSpeedBefore;
     private bool activated = false;
     void Awake()
     {
@@ -34,10 +32,12 @@ public class waveModifierScript : MonoBehaviour
             activated = true;
             jumpWave.timeElapsed = 0;
             dashWave.timeElapsed = 0;
-            jumpWave.movementSpeed *= jumpWaveModifier;
-            dashWave.movementSpeed *= dashWaveModifier;
+            jumpWave.movementSpeed = jumpWaveSpeedNew;
+            dashWave.movementSpeed = dashWaveSpeedNew;
             jumpWaveTypeBefore = jumpWave.waveType;
             dashWaveTypeBefore = dashWave.waveType;
+            jumpWaveSpeedBefore = jumpWave.movementSpeed;
+            dashWaveSpeedBefore = dashWave.movementSpeed;
             jumpWave.ChangeJumpWave(jumpWaveType);
             dashWave.ChangeDashWave(dashWaveType);
         }
@@ -46,8 +46,8 @@ public class waveModifierScript : MonoBehaviour
             activated = false;
             jumpWave.timeElapsed = 0;
             dashWave.timeElapsed = 0;
-            jumpWave.movementSpeed /= jumpWaveModifier;
-            dashWave.movementSpeed /= dashWaveModifier;
+            jumpWave.movementSpeed = jumpWaveSpeedBefore;
+            dashWave.movementSpeed = dashWaveSpeedBefore;
             jumpWave.ChangeJumpWave(jumpWaveTypeBefore);
             dashWave.ChangeDashWave(dashWaveTypeBefore);
         }

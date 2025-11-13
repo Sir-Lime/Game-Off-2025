@@ -109,15 +109,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Functions_0
+      name: cos
       rect:
         serializedVersion: 2
-        x: 27
-        y: 95
+        x: 99
+        y: 99
         width: 58
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -131,15 +131,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Functions_1
+      name: Screen
       rect:
         serializedVersion: 2
-        x: 123
-        y: 87
+        x: 1
+        y: 98
         width: 79
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,15 +153,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Functions_2
+      name: -sin
       rect:
         serializedVersion: 2
-        x: 27
-        y: 15
+        x: 1
+        y: 51
         width: 57
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,15 +175,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Functions_3
+      name: -cos
       rect:
         serializedVersion: 2
-        x: 123
-        y: 12
+        x: 163
+        y: 99
         width: 57
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,11 +196,121 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sin
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 57
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f068b7711ef55748ac0930937ad6920
+      internalID: 98851055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tan
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 50
+        width: 57
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869bb8ae5da13c434b49e229cbf91380
+      internalID: -1141435563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: -tan
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2
+        width: 57
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2726cfb4b79ff39b8c34957af18cd1f
+      internalID: 456887486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cot
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 51
+        width: 57
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f1daf73e560801c937424c339e2e1d
+      internalID: 46340589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: -cot
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 2
+        width: 57
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2514a6c76fd815db8ae34231463e24f
+      internalID: 1237216888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dab36e131ffcb119794ef535484b2c47
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +320,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Functions_0: 2310352742484501873
-      Functions_1: 7269876062605948817
-      Functions_2: 6642443395120425685
-      Functions_3: 8946622092430891657
+      -cos: 8946622092430891657
+      -cot: 1237216888
+      -sin: 6642443395120425685
+      -tan: 456887486
+      Screen: 7269876062605948817
+      cos: 2310352742484501873
+      cot: 46340589
+      sin: 98851055
+      tan: -1141435563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

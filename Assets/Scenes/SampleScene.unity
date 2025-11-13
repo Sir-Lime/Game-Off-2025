@@ -163,16 +163,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c8ae7c710e04ed18be31a7b8651cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minValue: -250
-  maxValue: 250
   jumpImage: {fileID: 1812048032}
   dashImage: {fileID: 1203812416}
-  sin: {fileID: 6642443395120425685, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  sin: {fileID: 98851055, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
   cos: {fileID: 2310352742484501873, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
-  neg_sin: {fileID: 8946622092430891657, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  tan: {fileID: -1141435563, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  cot: {fileID: 46340589, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_sin: {fileID: 6642443395120425685, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cos: {fileID: 8946622092430891657, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_tan: {fileID: 456887486, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cot: {fileID: 1237216888, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
   waveType: 0
   movementSpeed: 4
   timeElapsed: 0
+  waveValue: 0
+  normalizedWave: 0
 --- !u!1 &30742315
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 39410755}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.75, y: 6.52, z: 0}
+  m_LocalPosition: {x: 6.75, y: 9.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -590,16 +595,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c8ae7c710e04ed18be31a7b8651cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minValue: -250
-  maxValue: 250
   jumpImage: {fileID: 1812048032}
   dashImage: {fileID: 1203812416}
   sin: {fileID: 6642443395120425685, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
   cos: {fileID: 2310352742484501873, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
-  neg_sin: {fileID: 8946622092430891657, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  tan: {fileID: -1141435563, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  cot: {fileID: 46340589, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_sin: {fileID: 98851055, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cos: {fileID: 8946622092430891657, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_tan: {fileID: 456887486, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cot: {fileID: 1237216888, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
   waveType: 1
   movementSpeed: 2
   timeElapsed: 0
+  waveValue: 0
+  normalizedWave: 0
 --- !u!1 &245997563
 GameObject:
   m_ObjectHideFlags: 0
@@ -5957,7 +5967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6642443395120425685, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  m_Sprite: {fileID: 98851055, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7204,6 +7214,30 @@ PrefabInstance:
       propertyPath: jumpWave
       value: 
       objectReference: {fileID: 13199737}
+    - target: {fileID: 4354844509257195407, guid: d964b17f0c33c384db7eab2f95ee2fc1, type: 3}
+      propertyPath: dashWaveType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354844509257195407, guid: d964b17f0c33c384db7eab2f95ee2fc1, type: 3}
+      propertyPath: jumpWaveType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354844509257195407, guid: d964b17f0c33c384db7eab2f95ee2fc1, type: 3}
+      propertyPath: dashWaveModifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354844509257195407, guid: d964b17f0c33c384db7eab2f95ee2fc1, type: 3}
+      propertyPath: dashWaveSpeedNew
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354844509257195407, guid: d964b17f0c33c384db7eab2f95ee2fc1, type: 3}
+      propertyPath: jumpWaveModifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354844509257195407, guid: d964b17f0c33c384db7eab2f95ee2fc1, type: 3}
+      propertyPath: jumpWaveSpeedNew
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4354844509257195407, guid: d964b17f0c33c384db7eab2f95ee2fc1, type: 3}
       propertyPath: 'Activators.Array.data[0]'
       value: 
