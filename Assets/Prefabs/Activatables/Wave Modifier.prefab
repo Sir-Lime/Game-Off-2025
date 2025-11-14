@@ -47,13 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Activators:
   - {fileID: 0}
-  - {fileID: 0}
   jumpWave: {fileID: 0}
   dashWave: {fileID: 0}
-  jumpWaveModifier: 1
-  dashWaveModifier: 1
-  jumpWaveType: 1
-  dashWaveType: 2
+  jumpWaveSpeedNew: 2
+  dashWaveSpeedNew: 2
+  jumpWaveType: 2
+  dashWaveType: 3
 --- !u!212 &6259685975292737559
 SpriteRenderer:
   m_ObjectHideFlags: 0

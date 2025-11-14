@@ -3,10 +3,11 @@ using UnityEngine;
 public class waveModifierScript : MonoBehaviour
 {
     [SerializeField] private GameObject[] Activators;
-    [SerializeField] private Wave jumpWave, dashWave;
     [SerializeField] private float jumpWaveSpeedNew = 1, dashWaveSpeedNew = 1;
     [SerializeField] private Wave.WaveType jumpWaveType = Wave.WaveType.Sin, dashWaveType = Wave.WaveType.Cos;
     private Wave.WaveType jumpWaveTypeBefore, dashWaveTypeBefore;
+    private Wave jumpWave, dashWave;
+
     private float jumpWaveSpeedBefore, dashWaveSpeedBefore;
     private bool activated = false;
     void Awake()
