@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
+[RequireComponent(typeof(PixelPerfectCamera))]
 public class CameraScript : MonoBehaviour
 {
     public playerController.PlayerController playerController;
@@ -12,18 +13,18 @@ public class CameraScript : MonoBehaviour
     [SerializeField] private float yOffsetPos = 2f;
     [SerializeField] private float xOffsetPos = 3f;
     private float xOffset;
-    
     public PlayerInput input;
-
     private CameraFocusScript[] cameraFocusNodes;
+    private PixelPerfectCamera ppCamera;
     private int resolutionX, resolutionY;
 
     private void Start()
     {
-        cameraFocusNodes = GameObject.FindGameObjectsWithTag("CameraFocus").Select(obj => obj.GetComponent<CameraFocusScript>()).ToArray();
-
-        resolutionX = GetComponent<PixelPerfectCamera>().refResolutionX / GetComponent<PixelPerfectCamera>().assetsPPU;
-        resolutionY = GetComponent<PixelPerfectCamera>().refResolutionY / GetComponent<PixelPerfectCamera>().assetsPPU;
+        cameraFocusNodes = GameObject.FindGameObjectsWithTag("CameraFocus").Select(obj => obj.GetComponent<CameraFocusScript>()).ToArray(); 
+        ppCamera = GetComponent<PixelPerfectCamera>();
+        
+        resolutionX = ppCamera.refResolutionX / ppCamera.assetsPPU; 
+        resolutionY = ppCamera.refResolutionY / ppCamera.assetsPPU;
     }
 
     private void FixedUpdate()
