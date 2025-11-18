@@ -6,11 +6,13 @@ public class DoorScript : MonoBehaviour
 
     private BoxCollider2D col;
     private SpriteRenderer sr;
+    private Animator animator;
 
     void Start()
     {
         col = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -29,12 +31,13 @@ public class DoorScript : MonoBehaviour
         if (anyActivated)
         {
             col.enabled = false;
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
+            animator.SetBool("isActivated", true);
         }
         else
         {
             col.enabled = true;
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+            animator.SetBool("isActivated", false);
+
         }
     }
 }

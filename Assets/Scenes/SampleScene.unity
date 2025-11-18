@@ -27127,6 +27127,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5811928067033661536, guid: 3064822ae379029d3b9a27d0cdf58210, type: 3}
   m_PrefabInstance: {fileID: 5156336191481023055}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1705508011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4129991105213025051, guid: 9fea54c9683e8c736b8821ae7cd53915, type: 3}
+  m_PrefabInstance: {fileID: 481608794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1706534684
 GameObject:
   m_ObjectHideFlags: 0
@@ -27762,7 +27767,7 @@ Transform:
   m_GameObject: {fileID: 1876677266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.16, y: 4.35, z: 0}
+  m_LocalPosition: {x: 22.09, y: -0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29112,20 +29117,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1821847359}
     m_Modifications:
     - target: {fileID: 1002388576401356624, guid: a3cf82c8a41a2c4449779c4c36e722f4, type: 3}
+      propertyPath: Activators.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002388576401356624, guid: a3cf82c8a41a2c4449779c4c36e722f4, type: 3}
       propertyPath: 'Activators.Array.data[0]'
       value: 
       objectReference: {fileID: 947482310}
     - target: {fileID: 1002388576401356624, guid: a3cf82c8a41a2c4449779c4c36e722f4, type: 3}
       propertyPath: 'Activators.Array.data[1]'
       value: 
-      objectReference: {fileID: 768697066}
+      objectReference: {fileID: 1705508011}
     - target: {fileID: 7157019829669430580, guid: a3cf82c8a41a2c4449779c4c36e722f4, type: 3}
       propertyPath: m_Name
       value: Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 7591405923961910629, guid: a3cf82c8a41a2c4449779c4c36e722f4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7591405923961910629, guid: a3cf82c8a41a2c4449779c4c36e722f4, type: 3}
       propertyPath: m_LocalPosition.x
