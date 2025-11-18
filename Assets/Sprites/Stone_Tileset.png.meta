@@ -110,7 +110,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -136,7 +136,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 100
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -162,7 +162,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 100
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -188,7 +188,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 100
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -221,7 +221,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 100
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -247,7 +247,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 100
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -281,7 +281,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 84
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -307,7 +307,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 84
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -333,7 +333,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 84
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -359,7 +359,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 84
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -385,7 +385,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 84
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -411,7 +411,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 84
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -437,7 +437,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 68
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -463,7 +463,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 68
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -489,7 +489,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 68
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -515,7 +515,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 68
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -548,7 +548,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 68
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -574,7 +574,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 68
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -606,8 +606,8 @@ TextureImporter:
       name: Stone_Tileset_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
+        x: 48
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -619,7 +619,35 @@ TextureImporter:
         - {x: -8, y: 8}
         - {x: -8, y: -8}
         - {x: 8, y: -8}
-      physicsShape: []
+      physicsShape:
+      - - {x: 5, y: -7}
+        - {x: 6.012993, y: -6.999996}
+        - {x: 6, y: -6}
+        - {x: 7, y: -6}
+        - {x: 7, y: -4}
+        - {x: 8, y: -4}
+        - {x: 8, y: 4}
+        - {x: 7, y: 4}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 4}
+        - {x: -8, y: 4}
+        - {x: -8, y: -4}
+        - {x: -7, y: -4}
+        - {x: -7, y: -6}
+        - {x: -6, y: -6}
+        - {x: -6, y: -7}
+        - {x: -5, y: -7}
+        - {x: -5, y: -8}
+        - {x: 5, y: -8}
       tessellationDetail: 0.242
       bones: []
       spriteID: 9e71ccd54acd2ebe694cef3911b41dc7
@@ -632,8 +660,8 @@ TextureImporter:
       name: Stone_Tileset_25
       rect:
         serializedVersion: 2
-        x: 16
-        y: 36
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -658,8 +686,8 @@ TextureImporter:
       name: Stone_Tileset_26
       rect:
         serializedVersion: 2
-        x: 32
-        y: 36
+        x: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -684,8 +712,8 @@ TextureImporter:
       name: Stone_Tileset_27
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -710,8 +738,8 @@ TextureImporter:
       name: Stone_Tileset_28
       rect:
         serializedVersion: 2
-        x: 32
-        y: 20
+        x: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -736,8 +764,8 @@ TextureImporter:
       name: Stone_Tileset_29
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
+        x: 32
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -762,8 +790,8 @@ TextureImporter:
       name: Stone_Tileset_30
       rect:
         serializedVersion: 2
-        x: 16
-        y: 4
+        x: 0
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -788,8 +816,8 @@ TextureImporter:
       name: Stone_Tileset_31
       rect:
         serializedVersion: 2
-        x: 32
-        y: 4
+        x: 16
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -810,6 +838,202 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Stone_Tileset_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09365f7872d0089cc8dc0e55d092dd16
+      internalID: -1227559342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Tileset_10
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 205dc48ac59f409cfbfd73767837f7fa
+      internalID: -760798950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Tileset_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21136c618b90bd1e9f3d3605afd686e
+      internalID: -1975289215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Tileset_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 8, y: 5}
+        - {x: 7, y: 5}
+        - {x: 7, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 4}
+        - {x: -8, y: 4}
+        - {x: -8, y: -4}
+        - {x: -7, y: -4}
+        - {x: -7, y: -6}
+        - {x: -6, y: -6}
+        - {x: -6, y: -7}
+        - {x: -5, y: -7}
+        - {x: -5, y: -8}
+        - {x: 8, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc25f4d968c5e3b9b9bf0c45e6bae032
+      internalID: -965297032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Tileset_22
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 8, y: 4}
+        - {x: 7, y: 4}
+        - {x: 7, y: 5}
+        - {x: 3, y: 5}
+        - {x: 3, y: 6}
+        - {x: -7, y: 6}
+        - {x: -7, y: 5}
+        - {x: -8, y: 5}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec5034c682f38dae8cd8cef26d4bc8a
+      internalID: -1172227195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Tileset_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: -6}
+        - {x: 7, y: -6}
+        - {x: 7, y: -4}
+        - {x: 8, y: -4}
+        - {x: 8, y: 4}
+        - {x: 7, y: 4}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: -7, y: 6}
+        - {x: -7, y: 5}
+        - {x: -8, y: 5}
+        - {x: -8, y: -8}
+        - {x: 5, y: -8}
+        - {x: 5, y: -7}
+        - {x: 6, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d938a5ee21b4ffc5fa4cf64ed952d361
+      internalID: -1706152707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_Tileset_32
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4c4715e9aed42dbb1df976d44f9861
+      internalID: 120611129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -824,7 +1048,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":2.0,"y":2.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Stone_Tileset_0: 3989500641711367159
       Stone_Tileset_1: -3258799304113697048
@@ -852,6 +1076,7 @@ TextureImporter:
       Stone_Tileset_3: -1227559342
       Stone_Tileset_30: -261982373
       Stone_Tileset_31: -1703779392
+      Stone_Tileset_32: 120611129
       Stone_Tileset_4: -965980395
       Stone_Tileset_5: -237554346
       Stone_Tileset_6: 1982584851
