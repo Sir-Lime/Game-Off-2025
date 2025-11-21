@@ -5,10 +5,10 @@ public class enemyPatrolScript : MonoBehaviour {
     [SerializeField] private Transform[] patrolPoint;
     private int targetPoint = 0;
     [SerializeField] private float speed = 1;
+    private Level level;
 
-    void Start()
-    {
-        
+    void Start() {
+        level = FindFirstObjectByType<Level>();
     }
 
     void Update() {
@@ -17,6 +17,12 @@ public class enemyPatrolScript : MonoBehaviour {
         if (transform.position == patrolPoint[targetPoint].position) {
             ++targetPoint;
             if (targetPoint == patrolPoint.Length) targetPoint = 0;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            level.KillPlayer();
         }
     }
 }
