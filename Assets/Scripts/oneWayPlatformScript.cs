@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class oneWayPlatformScript : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class oneWayPlatformScript : MonoBehaviour {
         time += Time.deltaTime;
 
         if ((time - lastInteraction) > countDown) {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            gameObject.GetComponent<TilemapCollider2D>().enabled = true;
         }
     }
     private void OnCollisionStay2D(Collision2D collision) {
@@ -19,7 +20,7 @@ public class oneWayPlatformScript : MonoBehaviour {
             Debug.Log("collision?");
             if (input.actions["Down"].IsPressed()) {
                 Debug.Log("It works!!!");
-                gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+                gameObject.GetComponent<TilemapCollider2D>().enabled = false;
                 lastInteraction = time;
             }
         }

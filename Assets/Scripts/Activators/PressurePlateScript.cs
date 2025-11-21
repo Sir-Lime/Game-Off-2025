@@ -17,6 +17,6 @@ public class PressurePlateScript : MonoBehaviour
     void Update()
     {
         if (touching) gameObject.tag = "Activated";
-        else gameObject.tag = "Deactivated";
+        //else gameObject.tag = "Deactivated";
     }
 }

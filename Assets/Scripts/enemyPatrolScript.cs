@@ -2,27 +2,24 @@ using UnityEngine;
 
 public class enemyPatrolScript : MonoBehaviour {
 
-    [SerializeField] private Transform[] patrolPoint;
+    [SerializeField] private GameObject enemy;
+    private Transform[] patrolPoints;
     private int targetPoint = 0;
     [SerializeField] private float speed = 1;
-    private Level level;
 
     void Start() {
-        level = FindFirstObjectByType<Level>();
-    }
-
-    void Update() {
-        transform.position = Vector3.MoveTowards(transform.position, patrolPoint[targetPoint].position, speed * Time.deltaTime); 
-
-        if (transform.position == patrolPoint[targetPoint].position) {
-            ++targetPoint;
-            if (targetPoint == patrolPoint.Length) targetPoint = 0;
+        patrolPoints = new Transform[gameObject.transform.childCount - 1];
+        for (int i = 0; i < patrolPoints.Length; ++i) {
+            patrolPoints[i] = gameObject.transform.GetChild(i+1).gameObject.transform;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player")) {
-            level.KillPlayer();
+    void Update() {
+        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, patrolPoints[targetPoint].position, speed * Time.deltaTime); 
+
+        if (enemy.transform.position == patrolPoints[targetPoint].position) {
+            ++targetPoint;
+            if (targetPoint == patrolPoints.Length) targetPoint = 0;
         }
     }
 }

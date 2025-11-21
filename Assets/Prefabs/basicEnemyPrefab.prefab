@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 212524410309396359}
+  - component: {fileID: 3818756468510109576}
   m_Layer: 0
   m_Name: basicEnemyPrefab
   m_TagString: Untagged
@@ -35,6 +36,20 @@ Transform:
   - {fileID: 1129358066992303578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3818756468510109576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705876321503974810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a17e2877954d6a04ebda663481ecd8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 5378620226595171346}
+  speed: 1
 --- !u!1 &4194537808846859653
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +123,7 @@ GameObject:
   - component: {fileID: 5316651287296034796}
   - component: {fileID: 2501754760052978634}
   - component: {fileID: 75938350235788908}
-  - component: {fileID: 1503421174898188069}
+  - component: {fileID: 5914351457943431245}
   m_Layer: 0
   m_Name: basicEnemy
   m_TagString: Untagged
@@ -125,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 5378620226595171346}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.829, y: 5.93402, z: 0}
+  m_LocalPosition: {x: 11.829, y: 10.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -216,7 +231,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -232,7 +247,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1503421174898188069
+--- !u!114 &5914351457943431245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,14 +256,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5378620226595171346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a17e2877954d6a04ebda663481ecd8e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b47d13e2c4a84b469b734bfe54bfcbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoint:
-  - {fileID: 2355283903272630140}
-  - {fileID: 2568476205349479903}
-  - {fileID: 1129358066992303578}
-  speed: 1
 --- !u!1 &5571331136488902445
 GameObject:
   m_ObjectHideFlags: 0
