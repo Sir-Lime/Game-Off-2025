@@ -1,0 +1,43 @@
+using UnityEngine;
+
+public class DoorScript : MonoBehaviour
+{
+    [SerializeField] private GameObject[] Activators; // Assign multiple activators here
+
+    private BoxCollider2D col;
+    private SpriteRenderer sr;
+    private Animator animator;
+
+    void Start()
+    {
+        col = GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        bool anyActivated = false;
+
+        foreach (GameObject activator in Activators)
+        {
+            if (activator.CompareTag("Activated"))
+            {
+                anyActivated = true;
+                break;
+            }
+        }
+
+        if (anyActivated)
+        {
+            col.enabled = false;
+            animator.SetBool("isActivated", true);
+        }
+        else
+        {
+            col.enabled = true;
+            animator.SetBool("isActivated", false);
+
+        }
+    }
+}

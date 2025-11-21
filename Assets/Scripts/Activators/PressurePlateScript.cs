@@ -6,10 +6,12 @@ public class PressurePlateScript : MonoBehaviour
     private bool touching = false;
     void OnTriggerEnter2D(Collider2D col)
     {
-        touching = true;
+        if (col.gameObject.CompareTag("Player"))
+        touching = true;    
     }   
     void OnTriggerExit2D(Collider2D col)
     {
+        if (col.gameObject.CompareTag("Player"))
         touching = false;
     }
     void Update()
