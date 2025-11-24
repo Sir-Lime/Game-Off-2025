@@ -34,6 +34,6 @@ MonoBehaviour:
   JumpBuffer: 0.1
   maxDashSpeed: 20
   minDashSpeed: 10
-  dashSpeed: 1
-  DashDuration: 0.12
+  dashSpeed: 5
+  DashDuration: 0.5
   DashCooldown: 1.5

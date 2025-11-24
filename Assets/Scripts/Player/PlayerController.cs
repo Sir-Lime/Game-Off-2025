@@ -16,6 +16,7 @@ namespace playerController
         private CapsuleCollider2D playerCol;
         private FrameInput frameInput;
         private Vector2 frameVelocity;
+        private Animator animator;
         private float time;
         private bool cachedQueryStartInColliders;
         #endregion
@@ -25,11 +26,13 @@ namespace playerController
         {
             playerRB = GetComponent<Rigidbody2D>();
             playerCol = GetComponent<CapsuleCollider2D>();
+            
             cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
 
         private void Start()
         {
+            animator = GetComponent<Animator>();
         }
         #endregion
 
@@ -39,6 +42,7 @@ namespace playerController
             time += Time.deltaTime;
             GetInput();
             HandleDash();
+            HandleAnimations();
             Debug.Log(jumpWave.GetWaveValue());
         }
 
@@ -52,7 +56,7 @@ namespace playerController
         }
         #endregion
 
-        #region Input Handling
+        #region Input Handling & Animation Handling
 
         private void GetInput()
         {
@@ -74,6 +78,14 @@ namespace playerController
                 jumpToConsume = true;
                 timeJumpWasPressed = time;
             }
+        }
+
+        private void HandleAnimations()
+        {
+            animator.SetFloat("xVelocity", frameInput.Move.x);
+            animator.SetFloat("yVelocity", frameVelocity.y);
+            animator.SetBool("isGrounded", grounded);
+            animator.SetBool("isDash", isDashing);
         }
 
         #endregion
