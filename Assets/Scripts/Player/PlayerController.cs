@@ -173,7 +173,7 @@ namespace playerController
             timeJumpWasPressed = 0;
             bufferedJumpUsable = false;
             coyoteUsable = false;
-            frameVelocity.y = (stats.minJumpPower + stats.maxJumpPower * (jumpWave.GetWaveValue())) / stats.jumpPower;
+            frameVelocity.y = stats.minJumpPower + stats.maxJumpPower * jumpWave.GetWaveValue();
             timeLastGrounded = time;
         }
 
@@ -220,7 +220,7 @@ namespace playerController
             if (!isDashing)
             {
                 isDashing = true;
-                frameVelocity.x = (stats.minDashSpeed + stats.maxDashSpeed * dashWave.GetWaveValue() / stats.dashSpeed * facingDir);
+                frameVelocity.x = facingDir * (stats.minDashSpeed + stats.maxDashSpeed * dashWave.GetWaveValue());
                 timeDashPressed = time;
                 frameVelocity.y = -stats.GroundingForce;
             }

@@ -1,34 +1,40 @@
 fileFormatVersion: 2
-guid: 66d212cb6b1e3415fac97918d80081dc
+guid: a13462ddbaa8940029d03773948578fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1858684830856966646
-    second: dash_animation-Sheet_0
+      213: 4072749005439132333
+    second: starting-Sheet_0
   - first:
-      213: -1141974214232762460
-    second: dash_animation-Sheet_1
+      213: 3127724463690015903
+    second: starting-Sheet_1
   - first:
-      213: 1136678066790241177
-    second: dash_animation-Sheet_2
+      213: 7966740910869256363
+    second: starting-Sheet_2
   - first:
-      213: 7680715521681189144
-    second: dash_animation-Sheet_3
+      213: 2601871460229576635
+    second: starting-Sheet_3
   - first:
-      213: -6911603951615356580
-    second: dash_animation-Sheet_4
+      213: -4391874124586282815
+    second: starting-Sheet_4
   - first:
-      213: 6511584349214684581
-    second: dash_animation-Sheet_5
+      213: 923889437935345948
+    second: starting-Sheet_5
   - first:
-      213: -3745720801315189821
-    second: dash_animation-Sheet_6
+      213: 3610028073878044033
+    second: starting-Sheet_6
   - first:
-      213: 8572366530624139514
-    second: dash_animation-Sheet_7
+      213: -2516880130454620069
+    second: starting-Sheet_7
   - first:
-      213: -8351386691277821834
-    second: dash_animation-Sheet_8
+      213: -8482680102389097290
+    second: starting-Sheet_8
+  - first:
+      213: -7656312517839559698
+    second: starting-Sheet_9
+  - first:
+      213: -7034331931585833736
+    second: starting-Sheet_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -124,183 +130,227 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dash_animation-Sheet_0
+      name: starting-Sheet_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 5
         y: 3
-        width: 23
+        width: 18
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2668064af458830800000000000000
+      internalID: 4072749005439132333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starting-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3
+        width: 18
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f94ea8d04d8e76b20800000000000000
+      internalID: 3127724463690015903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starting-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 3
+        width: 18
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba81fe916ac8f8e60800000000000000
+      internalID: 7966740910869256363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starting-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 3
+        width: 19
         height: 37
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a0e0d5b7eff9436e0800000000000000
-      internalID: -1858684830856966646
+      spriteID: bb7f53ace44bb1420800000000000000
+      internalID: 2601871460229576635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dash_animation-Sheet_1
+      name: starting-Sheet_4
       rect:
         serializedVersion: 2
-        x: 28
-        y: 2
-        width: 26
+        x: 113
+        y: 3
+        width: 19
         height: 37
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a7100aa084e620f0800000000000000
-      internalID: -1141974214232762460
+      spriteID: 1c01ec9b0cdec03c0800000000000000
+      internalID: -4391874124586282815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dash_animation-Sheet_2
+      name: starting-Sheet_5
       rect:
         serializedVersion: 2
-        x: 60
+        x: 140
         y: 3
         width: 19
-        height: 36
+        height: 37
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 993920bedaa46cf00800000000000000
-      internalID: 1136678066790241177
+      spriteID: c112fdf7c8052dc00800000000000000
+      internalID: 923889437935345948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dash_animation-Sheet_3
+      name: starting-Sheet_6
       rect:
         serializedVersion: 2
-        x: 87
+        x: 167
         y: 3
         width: 19
-        height: 36
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 819e2a2a212679a60800000000000000
-      internalID: 7680715521681189144
+      spriteID: 18d30bc0865691230800000000000000
+      internalID: 3610028073878044033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dash_animation-Sheet_4
+      name: starting-Sheet_7
       rect:
         serializedVersion: 2
-        x: 107
-        y: 8
-        width: 28
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c51d7c343dc0510a0800000000000000
-      internalID: -6911603951615356580
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dash_animation-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 12
-        width: 23
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a53feb377bcd5a50800000000000000
-      internalID: 6511584349214684581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dash_animation-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 189
-        y: 10
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3cb01d1e6c6840cc0800000000000000
-      internalID: -3745720801315189821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dash_animation-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 249
+        x: 192
         y: 3
-        width: 19
-        height: 36
+        width: 20
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af0bc46f0f927f670800000000000000
-      internalID: 8572366530624139514
+      spriteID: b58730a3bde321dd0800000000000000
+      internalID: -2516880130454620069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dash_animation-Sheet_10
+      name: starting-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 3
+        width: 27
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bcd2d9d367774a80800000000000000
+      internalID: -8482680102389097290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starting-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 3
+        width: 18
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee3ebc474505fb590800000000000000
+      internalID: -7656312517839559698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: starting-Sheet_10
       rect:
         serializedVersion: 2
         x: 275
@@ -308,59 +358,15 @@ TextureImporter:
         width: 18
         height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 678e5744d0ae91c80800000000000000
-      internalID: -8351386691277821834
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dash_animation-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 135
-        y: 8
-        width: 27
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e56e3a9e97cc246a185834487a6ea416
-      internalID: 1523622061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dash_animation-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 10
-        width: 26
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdf7484cef1f24db585f147929c3a4c1
-      internalID: -1579296934
+      spriteID: 8f493a1b068016e90800000000000000
+      internalID: -7034331931585833736
       vertices: []
       indices: 
       edges: []
@@ -369,7 +375,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4052d6720ae3f4d8285c65ba37198b5b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -379,17 +385,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dash_animation-Sheet_0: -1858684830856966646
-      dash_animation-Sheet_1: -1141974214232762460
-      dash_animation-Sheet_10: -8351386691277821834
-      dash_animation-Sheet_2: 1136678066790241177
-      dash_animation-Sheet_3: 7680715521681189144
-      dash_animation-Sheet_4: -6911603951615356580
-      dash_animation-Sheet_5: 1523622061
-      dash_animation-Sheet_6: 6511584349214684581
-      dash_animation-Sheet_7: -3745720801315189821
-      dash_animation-Sheet_8: -1579296934
-      dash_animation-Sheet_9: 8572366530624139514
+      starting-Sheet_0: 4072749005439132333
+      starting-Sheet_1: 3127724463690015903
+      starting-Sheet_10: -7034331931585833736
+      starting-Sheet_2: 7966740910869256363
+      starting-Sheet_3: 2601871460229576635
+      starting-Sheet_4: -4391874124586282815
+      starting-Sheet_5: 923889437935345948
+      starting-Sheet_6: 3610028073878044033
+      starting-Sheet_7: -2516880130454620069
+      starting-Sheet_8: -8482680102389097290
+      starting-Sheet_9: -7656312517839559698
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

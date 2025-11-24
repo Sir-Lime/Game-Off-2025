@@ -21,6 +21,8 @@ public class Level : MonoBehaviour
     private Animator sceneTransition;
     private Animator respawnTransition;
     private GameObject player;
+    private Animator playerAnim;
+    private Rigidbody2D playerRb;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
     void Awake()
@@ -38,6 +40,8 @@ public class Level : MonoBehaviour
         sceneTransition = scenePanel.GetComponent<Animator>();
         respawnTransition = respawnPanel.GetComponent<Animator>();
         player = FindFirstObjectByType<PlayerController>().gameObject;
+        playerAnim = player.GetComponent<Animator>();
+        playerRb = player.GetComponent<Rigidbody2D>();
     }
 
     public void LoadNextScene()
@@ -55,21 +59,27 @@ public class Level : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(nextScene);
+
+        yield return new WaitForSeconds(0.3f);
+
+        playerAnim.SetTrigger("onRespawn");
     }
 
     public void KillPlayer()
     {
-        respawnPanel.SetActive(true);
+        playerAnim.SetTrigger("onDeath");
         StartCoroutine(Respawn());
     }
     
     IEnumerator Respawn()
     {
-        Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
-        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
-
         playerRb.constraints = RigidbodyConstraints2D.FreezePositionX;
-        playerSprite.enabled = false;
+
+        yield return new WaitForSeconds(0.3f);
+
+        respawnPanel.SetActive(true);
+        
+        //playerSprite.enabled = false;
         
         yield return new WaitForSeconds(respawnTime);
 
@@ -77,8 +87,11 @@ public class Level : MonoBehaviour
         player.transform.position = spawnPoint.transform.position;
         
         playerRb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-        playerSprite.enabled = true;
          
         respawnPanel.SetActive(false);   
+
+        yield return new WaitForSeconds(0.3f);
+
+        playerAnim.SetTrigger("onRespawn");
     }
 }
