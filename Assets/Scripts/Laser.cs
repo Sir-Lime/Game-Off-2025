@@ -1,42 +1,39 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
    [SerializeField] private float defaultDistance = 100f;
-   [SerializeField] private Transform laserFirePoint;
-   [SerializeField] private LineRenderer lineRender;
-   private Level level;
+   private bool isActivated = true;
+   private bool isFiring = true;
+   private Level levelManager;
 
     void Start()
     {
-        level = FindFirstObjectByType<Level>();
+        levelManager = FindAnyObjectByType<Level>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        ShootLaser();
-    }
-
-    private void ShootLaser()
-    {
-        if(Physics2D.Raycast(transform.position, transform.right))
-        {
-            RaycastHit2D hit2D = Physics2D.Raycast(laserFirePoint.position, -transform.up);
-            Draw2DRay(laserFirePoint.position, hit2D.point);
-
-            if(hit2D.collider != null)
-            {
-                if(hit2D.collider.gameObject.CompareTag("Player")) 
-                    level.KillPlayer();
-            }
+        if(isActivated) {
+            if(isFiring)
+                transform.localScale += new Vector3(0f, 0.1f, 0f);
+            else
+                transform.localScale -= new Vector3(0f, 0.1f, 0f);
         }
-        else
-            Draw2DRay(laserFirePoint.position, laserFirePoint.transform.right * defaultDistance);
     }
 
-    private void Draw2DRay(Vector2 startPos, Vector2 endPos)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        lineRender.SetPosition(0, startPos);
-        lineRender.SetPosition(1, endPos);
+        isFiring = false;
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            levelManager.KillPlayer();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        isFiring = true;   
     }
 }
