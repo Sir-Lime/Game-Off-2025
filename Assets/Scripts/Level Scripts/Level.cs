@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     public static Level Instance { get; private set; }
     [Header("Level Specific Settings")]
     [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private Collectible collectible;
     [SerializeField] private string nextScene;
 
     [Header("Transition Settings")]
@@ -41,8 +42,10 @@ public class Level : MonoBehaviour
 
     public void LoadNextScene()
     {
+        if(collectible.IsCollected) {
         scenePanel.SetActive(true);
         StartCoroutine(LoadLevel());
+        }
     }
     
     IEnumerator LoadLevel()

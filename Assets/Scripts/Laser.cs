@@ -21,7 +21,7 @@ public class Laser : MonoBehaviour
     {
         if(Physics2D.Raycast(transform.position, transform.right))
         {
-            RaycastHit2D hit2D = Physics2D.Raycast(laserFirePoint.position, transform.right);
+            RaycastHit2D hit2D = Physics2D.Raycast(laserFirePoint.position, -transform.up);
             Draw2DRay(laserFirePoint.position, hit2D.point);
 
             if(hit2D.collider != null)
