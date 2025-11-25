@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework.Constraints;
 using playerController;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,12 +18,12 @@ public class Level : MonoBehaviour
     [SerializeField] private float transitionTime = 1f;
     [SerializeField] private GameObject respawnPanel;
     [SerializeField] private float respawnTime = 0.5f;
-
     private Animator sceneTransition;
     private Animator respawnTransition;
     private GameObject player;
     private Animator playerAnim;
     private Rigidbody2D playerRb;
+    private bool isDead = false;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
     void Awake()
@@ -47,8 +48,8 @@ public class Level : MonoBehaviour
     public void LoadNextScene()
     {
         if(collectible.IsCollected) {
-        scenePanel.SetActive(true);
-        StartCoroutine(LoadLevel());
+            scenePanel.SetActive(true);
+            StartCoroutine(LoadLevel());
         }
     }
     
@@ -67,8 +68,12 @@ public class Level : MonoBehaviour
 
     public void KillPlayer()
     {
-        playerAnim.SetTrigger("onDeath");
-        StartCoroutine(Respawn());
+        if(!isDead)
+        {
+            isDead = true;
+            playerAnim.SetTrigger("onDeath");
+            StartCoroutine(Respawn()); 
+        } 
     }
     
     IEnumerator Respawn()
@@ -92,6 +97,7 @@ public class Level : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
 
+        isDead = false;
         playerAnim.SetTrigger("onRespawn");
     }
 }

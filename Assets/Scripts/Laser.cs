@@ -18,7 +18,7 @@ public class Laser : MonoBehaviour
         if(isActivated) {
             if(isFiring)
                 transform.localScale += new Vector3(0f, 0.1f, 0f);
-            else
+            else if(!isFiring && transform.localScale.y >= 30f)
                 transform.localScale -= new Vector3(0f, 0.1f, 0f);
         }
     }
