@@ -6,6 +6,7 @@ public class Teleporter : MonoBehaviour, IInteractable
     [SerializeField] private GameObject destination;
     private Camera mainCamera;
     public bool isActivated;
+    public GameObject portal;
 
     void Start()
     {
@@ -19,11 +20,15 @@ public class Teleporter : MonoBehaviour, IInteractable
             if (activator.CompareTag("Activated"))
             {
                 isActivated = true;
+                portal.SetActive(true);
+                gameObject.tag = "Activated"; 
                 break;
             }
             else
             {
                 isActivated = false;
+                portal.SetActive(false);
+                gameObject.tag = "Deactivated";
             }
         }
     }

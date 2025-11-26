@@ -1,13 +1,19 @@
-using UnityEngine;
+        using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ButtonScript : MonoBehaviour, IInteractable
 {
     [SerializeField] private float activeDuration = 3f; // how long it stays active automatically
     //private bool touching = false;
-    private float timer = 0f;
+    private float timer = 0f;   
     private bool isActive = false;
+    public SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
+    public void Awake()
+    {
+        originalColor = spriteRenderer.color;
+    }
     public void Interact(GameObject sender)
     {
         if(sender.CompareTag("Player")) {
@@ -34,6 +40,7 @@ public class ButtonScript : MonoBehaviour, IInteractable
         isActive = true;
         gameObject.tag = "Activated";
         timer = activeDuration;
+        spriteRenderer.color = Color.green;
     }
 
     private void DeactivateButton()
@@ -41,5 +48,6 @@ public class ButtonScript : MonoBehaviour, IInteractable
         isActive = false;
         gameObject.tag = "Deactivated";
         timer = 0f;
+        spriteRenderer.color = originalColor;
     }
 }
