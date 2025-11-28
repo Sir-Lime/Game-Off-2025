@@ -23,6 +23,7 @@ public class Level : MonoBehaviour
     private GameObject player;
     private Animator playerAnim;
     private Rigidbody2D playerRb;
+    private Camera mainCamera;
     private bool isDead = false;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
@@ -43,6 +44,10 @@ public class Level : MonoBehaviour
         player = FindFirstObjectByType<PlayerController>().gameObject;
         playerAnim = player.GetComponent<Animator>();
         playerRb = player.GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
+
+        playerAnim.SetTrigger("onRespawn");
+        isDead = false;
     }
 
     public void LoadNextScene()
@@ -78,8 +83,6 @@ public class Level : MonoBehaviour
     
     IEnumerator Respawn()
     {
-        playerRb.constraints = RigidbodyConstraints2D.FreezePositionX;
-
         yield return new WaitForSeconds(0.3f);
 
         respawnPanel.SetActive(true);
@@ -89,15 +92,7 @@ public class Level : MonoBehaviour
         yield return new WaitForSeconds(respawnTime);
 
         respawnTransition.SetTrigger("Respawn");
-        player.transform.position = spawnPoint.transform.position;
-        
-        playerRb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-         
-        respawnPanel.SetActive(false);   
-
-        yield return new WaitForSeconds(0.3f);
-
-        isDead = false;
-        playerAnim.SetTrigger("onRespawn");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log(SceneManager.GetActiveScene().name);
     }
 }

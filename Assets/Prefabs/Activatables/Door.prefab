@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Activators:
   - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &6919303124697681980
 Animator:
   serializedVersion: 7

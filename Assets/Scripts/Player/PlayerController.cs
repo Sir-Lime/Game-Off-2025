@@ -43,7 +43,6 @@ namespace playerController
             GetInput();
             HandleDash();
             HandleAnimations();
-            Debug.Log(jumpWave.GetWaveValue());
         }
 
         private void FixedUpdate()
