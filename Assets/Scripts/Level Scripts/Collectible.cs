@@ -1,15 +1,17 @@
 using NUnit.Framework;
+using playerController;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
    [SerializeField] private float followSpeed = 0.125f;
-   [SerializeField] private Vector3 offset = new Vector3(10.5f, 1.5f, 0.0f);
-   private bool isCollected = false;
+   [SerializeField] private Vector2 offset = new Vector2(3.5f, 1.5f);
    private Transform entityTransform;
+   private PlayerController player;
+   private bool isCollected = false;
    public bool IsCollected { get { return isCollected; } }
 
-    void LateUpdate()
+    void Update()
     {
         if(isCollected)
         {
@@ -19,17 +21,18 @@ public class Collectible : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
    {
-      if (collision.gameObject.CompareTag("Player"))
+      if (collision.gameObject.CompareTag("Player") && !isCollected)
       {
          entityTransform = collision.gameObject.transform;
+         player = entityTransform.GetComponent<PlayerController>();
          isCollected = true;
       }
    }
 
    public void FollowPlayer()
    {
-      Vector3 targetPosition = entityTransform.position + offset;
-      Vector3 smoothPosition = Vector3.Lerp(entityTransform.position, targetPosition, followSpeed);
+      Vector3 targetPosition = player.FacingDir == 1 ? entityTransform.position + new Vector3(-offset.x, offset.y) : entityTransform.position + new Vector3(offset.x, offset.y);
+      Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
       transform.position = smoothPosition;
    }
 }

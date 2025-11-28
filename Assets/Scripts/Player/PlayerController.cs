@@ -125,6 +125,7 @@ namespace playerController
         #region Horizontal
 
         public int facingDir = 1;
+        public int FacingDir {get { return facingDir; }}
 
         private void HandleDirection()
         {

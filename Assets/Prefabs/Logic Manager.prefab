@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &656469129521613654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4804040769955483399}
+  - component: {fileID: 8339979279389361197}
+  m_Layer: 0
+  m_Name: DashWave
+  m_TagString: DashWave
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4804040769955483399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656469129521613654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2628483815023679938}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8339979279389361197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656469129521613654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c8ae7c710e04ed18be31a7b8651cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpImage: {fileID: 0}
+  dashImage: {fileID: 0}
+  sin: {fileID: 6642443395120425685, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  cos: {fileID: 2310352742484501873, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  tan: {fileID: -1141435563, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  cot: {fileID: 46340589, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_sin: {fileID: 98851055, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cos: {fileID: 8946622092430891657, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_tan: {fileID: 456887486, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cot: {fileID: 1237216888, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  waveType: 1
+  movementSpeed: 2
+  timeElapsed: 0
+  waveValue: 0
+  normalizedWave: 0
+--- !u!1 &2047182748293426893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976544590210269942}
+  - component: {fileID: 3027517490279666838}
+  m_Layer: 0
+  m_Name: JumpWave
+  m_TagString: JumpWave
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976544590210269942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047182748293426893}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2628483815023679938}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3027517490279666838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047182748293426893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c8ae7c710e04ed18be31a7b8651cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpImage: {fileID: 0}
+  dashImage: {fileID: 0}
+  sin: {fileID: 98851055, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  cos: {fileID: 2310352742484501873, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  tan: {fileID: -1141435563, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  cot: {fileID: 46340589, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_sin: {fileID: 6642443395120425685, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cos: {fileID: 8946622092430891657, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_tan: {fileID: 456887486, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  neg_cot: {fileID: 1237216888, guid: d183c6600b128a5959325d9d960bb90a, type: 3}
+  waveType: 0
+  movementSpeed: 4
+  timeElapsed: 0
+  waveValue: 0
+  normalizedWave: 0
+--- !u!1 &5413718385256321167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2628483815023679938}
+  - component: {fileID: 4330618538235063737}
+  - component: {fileID: 6571898184901269433}
+  m_Layer: 0
+  m_Name: Logic Manager
+  m_TagString: Logic
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2628483815023679938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413718385256321167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 976544590210269942}
+  - {fileID: 4804040769955483399}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4330618538235063737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413718385256321167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: fd040e32da09b784a86cefda751f5248, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player Controls
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &6571898184901269433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413718385256321167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750bc2b3fccdf33368cbd748f641eb83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
