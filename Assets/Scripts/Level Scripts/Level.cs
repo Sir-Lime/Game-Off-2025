@@ -46,7 +46,6 @@ public class Level : MonoBehaviour
         playerRb = player.GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
 
-        playerAnim.SetTrigger("onRespawn");
         isDead = false;
     }
 
@@ -85,6 +84,7 @@ public class Level : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
 
+        playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         respawnPanel.SetActive(true);
         
         //playerSprite.enabled = false;
@@ -93,6 +93,6 @@ public class Level : MonoBehaviour
 
         respawnTransition.SetTrigger("Respawn");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log(SceneManager.GetActiveScene().name);
+        playerAnim.SetTrigger("onRespawn");
     }
 }

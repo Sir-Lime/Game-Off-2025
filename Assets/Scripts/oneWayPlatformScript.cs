@@ -17,9 +17,9 @@ public class oneWayPlatformScript : MonoBehaviour {
     }
     private void OnCollisionStay2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
-            Debug.Log("collision?");
+            //Debug.Log("collision?");
             if (input.actions["Down"].IsPressed()) {
-                Debug.Log("It works!!!");
+                //Debug.Log("It works!!!");
                 gameObject.GetComponent<TilemapCollider2D>().enabled = false;
                 lastInteraction = time;
             }
