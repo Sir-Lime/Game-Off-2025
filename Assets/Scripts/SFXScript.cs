@@ -42,7 +42,7 @@ public class SFXScript : MonoBehaviour
     public void buttonSFX()
     {
 
-        PlaySFX(buttonSound, transform, 0.5f, Random.Range(0.9f, 1.1f));
+        PlaySFX(buttonSound, transform, 1f, Random.Range(0.9f, 1.1f));
     }
     public void closeDoorSFX()
     {
@@ -100,22 +100,23 @@ public class SFXScript : MonoBehaviour
     {
         PlaySFX(walkSound, transform, 0.2f, pitch);
     }
-    public void slideSFX1()
+    public void slideSFX(int sliderNumber)
     {
-        float pitch;
-        pitch = 1f + Masterslider.value;
-        PlaySFX(buttonSound, transform, 1, pitch);
-    }
-    public void slideSFX2()
-    {
-        float pitch;
-        pitch = 1f + MusicSlider.value;
-        PlaySFX(buttonSound, transform, 1, pitch);
-    }
-    public void slideSFX3()
-    {
-        float pitch;
-        pitch = 1f + SFXSlider.value;
-        PlaySFX(buttonSound, transform, 1, pitch);
+        switch (sliderNumber)
+        {
+            case 1:
+                float pitch;
+                pitch = 1f + Masterslider.value;
+                PlaySFX(buttonSound, transform, 1, pitch);
+                break;
+            case 2:
+                pitch = 1f + MusicSlider.value;
+                PlaySFX(buttonSound, transform, 1, pitch);
+                break;
+            case 3:
+                pitch = 1f + SFXSlider.value;
+                PlaySFX(buttonSound, transform, 1, pitch);
+                break;
+        }
     }
 }
