@@ -10,10 +10,13 @@ public class waveModifierScript : MonoBehaviour
 
     private float jumpWaveSpeedBefore, dashWaveSpeedBefore;
     private bool activated = false;
+    private Animator animator;
     void Awake()
     {
         jumpWave = GameObject.FindWithTag("JumpWave")?.GetComponent<Wave>();
         dashWave = GameObject.FindWithTag("DashWave")?.GetComponent<Wave>();
+        animator = GetComponent<Animator>();
+
     }
     void Update()
     {
@@ -33,14 +36,15 @@ public class waveModifierScript : MonoBehaviour
             activated = true;
             jumpWave.timeElapsed = 0;
             dashWave.timeElapsed = 0;
-            jumpWave.movementSpeed = jumpWaveSpeedNew;
-            dashWave.movementSpeed = dashWaveSpeedNew;
             jumpWaveTypeBefore = jumpWave.waveType;
             dashWaveTypeBefore = dashWave.waveType;
             jumpWaveSpeedBefore = jumpWave.movementSpeed;
             dashWaveSpeedBefore = dashWave.movementSpeed;
+            jumpWave.movementSpeed = jumpWaveSpeedNew;
+            dashWave.movementSpeed = dashWaveSpeedNew;
             jumpWave.ChangeJumpWave(jumpWaveType);
             dashWave.ChangeDashWave(dashWaveType);
+            animator.SetBool("Activated", true);
         }
         else if (!anyActivated && activated)
         {
@@ -51,6 +55,7 @@ public class waveModifierScript : MonoBehaviour
             dashWave.movementSpeed = dashWaveSpeedBefore;
             jumpWave.ChangeJumpWave(jumpWaveTypeBefore);
             dashWave.ChangeDashWave(dashWaveTypeBefore);
+            animator.SetBool("Activated", false);
         }
     }
 }

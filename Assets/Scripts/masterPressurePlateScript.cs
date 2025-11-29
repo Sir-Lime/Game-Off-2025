@@ -1,53 +1,43 @@
-using System;
 using UnityEngine;
 
-public class masterPressurePlateScript : MonoBehaviour {
+public class masterPressurePlateScript : MonoBehaviour
+{
+    private PressurePlateScript[] plates;
+    private bool completed = false;
 
-    private GameObject[] pressurePlates;
-    [SerializeField] private float timer = 5;
-    private float time = -1;
-    private int counter = 0;
+    void Start()
+    {
+        plates = GetComponentsInChildren<PressurePlateScript>();
+    }
 
-    void Start() {
-        pressurePlates = new GameObject[gameObject.transform.childCount];
+    void Update()
+    {
+        if (completed) return;
 
-        for (int i = 0; i< pressurePlates.Length; ++i) {
-            pressurePlates[i] = gameObject.transform.GetChild(i).gameObject;
+        int activeCount = 0;
+
+        for (int i = 0; i < plates.Length; i++)
+        {
+            if (plates[i].gameObject.CompareTag("Activated"))
+                activeCount++;
+        }
+
+        if (activeCount == plates.Length)
+        {
+            CompletePuzzle();
         }
     }
 
-    void Update() {
-        if (time > timer) {
-            for (int i = 0; i < pressurePlates.Length; ++i) 
-            {
-                SFXScript.instance.pressurePlateSFX();
-                pressurePlates[i].gameObject.tag = "Deactivated";
-                pressurePlates[i].GetComponent<PressurePlateScript>().sr.sprite = pressurePlates[i].GetComponent<PressurePlateScript>().deactivatedSprite;
-                pressurePlates[i].GetComponent<PressurePlateScript>().ind_sr.sprite = pressurePlates[i].GetComponent<PressurePlateScript>().ind_deactivatedSprite;
-                pressurePlates[i].GetComponent<PressurePlateScript>().ind_sr.color = pressurePlates[i].GetComponent<PressurePlateScript>().ind_originalColor;
-            } time = -1; counter = 0;
+    void CompletePuzzle()
+    {
+        completed = true;
+        gameObject.tag = "Activated";
+
+        foreach (var plate in plates)
+        {
+            plate.LockActivatedState();
         }
 
-        if (time == -1) {
-            for (int i = 0;i < pressurePlates.Length; ++i) {
-                if (pressurePlates[i].gameObject.tag == "Activated") {
-                    time = 0;  ++counter;
-                }
-            }
-        } else {
-            time += Time.deltaTime;
-            counter = 0;
-            for (int i = 0; i < pressurePlates.Length; ++i)
-            {
-                if (pressurePlates[i].gameObject.tag == "Activated")
-                {
-                    ++counter;
-                }
-            }
-        }
-
-        if (counter == pressurePlates.Length) {
-            gameObject.tag = "Activated";
-        }
+        SFXScript.instance.pickUpSFX();
     }
 }

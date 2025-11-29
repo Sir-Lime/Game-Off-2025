@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 212524410309396359}
   - component: {fileID: 3818756468510109576}
   m_Layer: 0
-  m_Name: basicEnemyPrefab
+  m_Name: Ball Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e2877954d6a04ebda663481ecd8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 5378620226595171346}
-  speed: 1
+  Ball: {fileID: 5378620226595171346}
+  travelTime: 3
 --- !u!1 &4194537808846859653
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ GameObject:
   m_Layer: 0
   m_Name: patrolPointI
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -75,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 4194537808846859653}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.49, y: 2.77, z: 0}
+  m_LocalPosition: {x: 2.49, y: 8.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,7 +93,7 @@ GameObject:
   m_Layer: 0
   m_Name: patrolPointII
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 4219272347819368457}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.53, y: 10.9, z: 0}
+  m_LocalPosition: {x: 4.92, y: 10.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,8 +124,9 @@ GameObject:
   - component: {fileID: 2501754760052978634}
   - component: {fileID: 75938350235788908}
   - component: {fileID: 5914351457943431245}
+  - component: {fileID: 5780076627996099281}
   m_Layer: 0
-  m_Name: basicEnemy
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 5378620226595171346}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.829, y: 10.48, z: 0}
+  m_LocalPosition: {x: 1.83, y: 10.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,8 +191,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: -3603556060819865620, guid: b474c6753f3dbad01a2a679c6bc7aae8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -239,7 +240,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1.1875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -259,6 +260,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b47d13e2c4a84b469b734bfe54bfcbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5780076627996099281
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378620226595171346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cfa1be79ce6a647ddba3fe0872f7285c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5571331136488902445
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +294,7 @@ GameObject:
   m_Layer: 0
   m_Name: patrolPointIII
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -284,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 5571331136488902445}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.91, y: 0.69, z: 0}
+  m_LocalPosition: {x: -1.67, y: 10.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

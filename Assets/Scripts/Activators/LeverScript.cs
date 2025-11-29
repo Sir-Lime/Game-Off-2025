@@ -7,15 +7,19 @@ public class LeverScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite activatedSprite;
     public Sprite deactivatedSprite;
+    private bool isTouching = false;
+    private PlayerController pc;
+    private bool executed = false;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        GameObject obj = GameObject.FindGameObjectWithTag("Player");
+        pc = obj.GetComponent<PlayerController>();
     }
-    void OnTriggerEnter2D(Collider2D col)
+    void Update()
     {
-        PlayerController controller = col.GetComponent<PlayerController>();
-        if (controller.isDashing)
+        if (pc.isDashing && isTouching && !executed)
         {
             if (gameObject.CompareTag("Activated")) 
             {
@@ -28,8 +32,19 @@ public class LeverScript : MonoBehaviour
                 gameObject.tag = "Activated"; 
                 spriteRenderer.sprite = activatedSprite;
                 SFXScript.instance.leverSFX();
-            }   
-        }
-        
+            } 
+            executed = true;
+        }   
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        isTouching = true;
+        pc = col.GetComponent<PlayerController>();
+
     }   
+    void OnTriggerExit2D(Collider2D col)
+    {
+        isTouching = false;
+        executed = false;
+    } 
 }

@@ -82,7 +82,7 @@ public class SFXScript : MonoBehaviour
     }
     public void portalSFX()
     {
-        PlaySFX(portalSound, transform, 1, Random.Range(0.8f, 1.2f));
+        PlaySFX(portalSound, transform, 0.4f, Random.Range(0.8f, 1.2f));
     }
     public void pressurePlateSFX()
     {

@@ -27,6 +27,7 @@ public class Collectible : MonoBehaviour
          player = entityTransform.GetComponent<PlayerController>();
          isCollected = true;
          SFXScript.instance.pickUpSFX();
+         tag = "Activated";
       }
    }
 

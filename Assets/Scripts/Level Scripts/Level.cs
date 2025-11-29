@@ -3,7 +3,10 @@ using NUnit.Framework.Constraints;
 using playerController;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
+
 
 public class Level : MonoBehaviour
 {
@@ -45,16 +48,19 @@ public class Level : MonoBehaviour
         playerAnim = player.GetComponent<Animator>();
         playerRb = player.GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
-
         isDead = false;
+
+
+        if(nextScene == "null" || nextScene == "")
+        {
+            nextScene = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
+        }
     }
 
     public void LoadNextScene()
     {
-        if(collectible.IsCollected) {
-            scenePanel.SetActive(true);
-            StartCoroutine(LoadLevel());
-        }
+        scenePanel.SetActive(true);
+        StartCoroutine(LoadLevel());
     }
     
     IEnumerator LoadLevel()

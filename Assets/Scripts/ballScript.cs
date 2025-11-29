@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class enemyScript : MonoBehaviour
+public class ballScript : MonoBehaviour
 {
 
     private Level level;
@@ -8,8 +8,6 @@ public class enemyScript : MonoBehaviour
     void Start()
     {
         level = FindFirstObjectByType<Level>();
-
-
     }
 
     // Update is called once per frame

@@ -100,9 +100,7 @@ namespace playerController
             Physics2D.queriesStartInColliders = false;
 
             bool groundHit = Physics2D.CapsuleCast(playerCol.bounds.center, playerCol.size, playerCol.direction, 0, Vector2.down, stats.GrounderDistance, ~stats.PlayerLayer);
-            bool ceilingHit = Physics2D.CapsuleCast(playerCol.bounds.center, playerCol.size, playerCol.direction, 0, Vector2.up, stats.GrounderDistance, ~stats.PlayerLayer);
 
-            if (ceilingHit) frameVelocity.y = Mathf.Min(0, frameVelocity.y);
             if (grounded) timeLastGrounded = time;
             if (!grounded && groundHit)
             {

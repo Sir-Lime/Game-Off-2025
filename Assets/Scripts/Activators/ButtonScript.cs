@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class ButtonScript : MonoBehaviour, IInteractable
 {
-    [SerializeField] private float activeDuration = 3f; // how long it stays active automatically
-    [SerializeField] private float deactiveDuration = 3f; // How long it stays deactivated automatically
+    [SerializeField] private float activeDuration = 3f;
+    [SerializeField] private float deactiveDuration = 3f; 
     [SerializeField] private bool isActive = false;
     [Header("Auto Activation/Deactivation")]
     [Tooltip("One should be true and the other should be false. Both can be false but not true. If both are true, then auto deactivation is prioritized.")]
@@ -14,8 +14,8 @@ public class ButtonScript : MonoBehaviour, IInteractable
     //private bool touching = false;
     private float timer = 0f;   
     public SpriteRenderer spriteRenderer;
-    private Color AColor; // Activated Color
-    private Color DColor; // Deactivated Color
+    private Color AColor; 
+    private Color DColor; 
 
     public void Awake()
     {
@@ -38,7 +38,6 @@ public class ButtonScript : MonoBehaviour, IInteractable
     }
     void Update()
     {
-        // Handle automatic deactivation after timer runs out
         if (isActive && autoDeactivation)
         {
             timer -= Time.deltaTime;

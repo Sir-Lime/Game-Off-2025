@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
 public class Teleporter : MonoBehaviour, IInteractable
@@ -8,10 +10,15 @@ public class Teleporter : MonoBehaviour, IInteractable
     public bool isActivated;
     public GameObject portal;
     private bool playedSFX = false;
+    public bool endPortal = false;
 
     void Start()
     {
         mainCamera = Camera.main;
+        if(endPortal)
+        {
+            activators = new GameObject[] { GameObject.FindWithTag("Tape")};
+        }
     }
     void Update()
     {
