@@ -20,6 +20,11 @@ public class PlayerInteraction : MonoBehaviour
                 if (collider.TryGetComponent(out IInteractable interactable))
                 {
                     interactable.Interact(this.gameObject);
+                    int random = Random.Range(0, 1);
+                    if (random == 0)
+                        SFXScript.instance.interactSFX();
+                    else
+                        SFXScript.instance.interact2SFX();
                 }
             }
         }

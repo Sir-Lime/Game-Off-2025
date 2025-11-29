@@ -7,6 +7,7 @@ public class Teleporter : MonoBehaviour, IInteractable
     private Camera mainCamera;
     public bool isActivated;
     public GameObject portal;
+    private bool playedSFX = false;
 
     void Start()
     {
@@ -22,6 +23,10 @@ public class Teleporter : MonoBehaviour, IInteractable
                 isActivated = true;
                 portal.SetActive(true);
                 gameObject.tag = "Activated"; 
+                if (!playedSFX) {
+                    SFXScript.instance.portalSFX();
+                    playedSFX = true;
+                }
                 break;
             }
             else
@@ -29,6 +34,7 @@ public class Teleporter : MonoBehaviour, IInteractable
                 isActivated = false;
                 portal.SetActive(false);
                 gameObject.tag = "Deactivated";
+                playedSFX = false;
             }
         }
     }

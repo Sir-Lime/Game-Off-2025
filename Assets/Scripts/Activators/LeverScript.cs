@@ -21,11 +21,13 @@ public class LeverScript : MonoBehaviour
             {
                 gameObject.tag = "Deactivated";
                 spriteRenderer.sprite = deactivatedSprite;
+                SFXScript.instance.leverSFX();
             }
             else if (gameObject.CompareTag("Deactivated")) 
             {
                 gameObject.tag = "Activated"; 
                 spriteRenderer.sprite = activatedSprite;
+                SFXScript.instance.leverSFX();
             }   
         }
         

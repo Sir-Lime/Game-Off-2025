@@ -7,6 +7,7 @@ public class DoorScript : MonoBehaviour
     private BoxCollider2D col;
     private SpriteRenderer sr;
     private Animator animator;
+    private bool playedSFX = false;
 
     void Start()
     {
@@ -32,12 +33,19 @@ public class DoorScript : MonoBehaviour
         {
             col.enabled = false;
             animator.SetBool("isActivated", true);
+            if (!playedSFX) {
+                SFXScript.instance.openDoorSFX();   
+                playedSFX = true;
+            }
         }
         else
         {
             col.enabled = true;
             animator.SetBool("isActivated", false);
-
+            if (playedSFX) {
+                SFXScript.instance.closeDoorSFX();
+                playedSFX = false;
+            }
         }
     }
 }

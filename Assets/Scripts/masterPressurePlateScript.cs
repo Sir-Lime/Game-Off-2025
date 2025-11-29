@@ -20,6 +20,7 @@ public class masterPressurePlateScript : MonoBehaviour {
         if (time > timer) {
             for (int i = 0; i < pressurePlates.Length; ++i) 
             {
+                SFXScript.instance.pressurePlateSFX();
                 pressurePlates[i].gameObject.tag = "Deactivated";
                 pressurePlates[i].GetComponent<PressurePlateScript>().sr.sprite = pressurePlates[i].GetComponent<PressurePlateScript>().deactivatedSprite;
                 pressurePlates[i].GetComponent<PressurePlateScript>().ind_sr.sprite = pressurePlates[i].GetComponent<PressurePlateScript>().ind_deactivatedSprite;

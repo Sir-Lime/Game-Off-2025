@@ -124,26 +124,42 @@ namespace playerController
         #region Horizontal
 
         public int facingDir = 1;
-        public int FacingDir {get { return facingDir; }}
+        public int FacingDir {get { return facingDir; }}    
+        private float lastWalkingSFXTime = float.MinValue;
+        public float flipFlapInterval = 0.3f; 
 
+        private int StepCount = 0;
         private void HandleDirection()
         {
+
+
             if (frameInput.Move.x == 0)
             {
                 var deceleration = grounded ? stats.GroundDeceleration : stats.AirDeceleration;
                 frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
             }
-            else if (frameInput.Move.x < 0)
-            {
-                facingDir = -1;
-                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
-            }
             else
             {
-                facingDir = 1;  
-                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
+                if (grounded && time - lastWalkingSFXTime >= flipFlapInterval) // must be on the ground.. duh
+                {
+                lastWalkingSFXTime = time;
+                float pitch = 0.9f;
+                if ((++StepCount) % 2 == 0)
+                    pitch = 1.1f;
+                SFXScript.instance.walkSFX(pitch);
+                }
+                if (frameInput.Move.x < 0)
+                {
+                    facingDir = -1;
+                    transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                    frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    facingDir = 1;  
+                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    frameVelocity.x = Mathf.MoveTowards(frameVelocity.x, frameInput.Move.x * stats.MaxSpeed, stats.Acceleration * Time.fixedDeltaTime);
+                }
             }
         }
 
@@ -175,6 +191,7 @@ namespace playerController
             coyoteUsable = false;
             frameVelocity.y = stats.minJumpPower + stats.maxJumpPower * jumpWave.GetWaveValue();
             timeLastGrounded = time;
+            SFXScript.instance.jumpSFX();
         }
 
         #endregion
@@ -219,6 +236,7 @@ namespace playerController
         {
             if (!isDashing)
             {
+                SFXScript.instance.dashSFX();   
                 isDashing = true;
                 frameVelocity.x = facingDir * (stats.minDashSpeed + stats.maxDashSpeed * dashWave.GetWaveValue());
                 timeDashPressed = time;

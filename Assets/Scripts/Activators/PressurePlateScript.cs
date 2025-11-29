@@ -20,6 +20,8 @@ public class PressurePlateScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         touching = true;    
+        if(gameObject.tag == "Deactivated")
+        SFXScript.instance.pressurePlateSFX();
     }   
     void OnTriggerExit2D(Collider2D col)    
     {

@@ -61,6 +61,7 @@ public class ButtonScript : MonoBehaviour, IInteractable
         gameObject.tag = "Activated";
         timer = activeDuration;
         spriteRenderer.color = AColor;
+        SFXScript.instance.buttonSFX();
     }
 
     private void DeactivateButton()
@@ -69,5 +70,6 @@ public class ButtonScript : MonoBehaviour, IInteractable
         gameObject.tag = "Deactivated";
         timer = autoActivation ? deactiveDuration : 0f;
         spriteRenderer.color = DColor;
+        SFXScript.instance.buttonSFX();
     }
 }

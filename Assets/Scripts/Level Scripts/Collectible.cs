@@ -26,6 +26,7 @@ public class Collectible : MonoBehaviour
          entityTransform = collision.gameObject.transform;
          player = entityTransform.GetComponent<PlayerController>();
          isCollected = true;
+         SFXScript.instance.pickUpSFX();
       }
    }
 
