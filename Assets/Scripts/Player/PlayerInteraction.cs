@@ -5,6 +5,13 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private PlayerInput input;
     [SerializeField] private float interactionDistance = 2f;
+    private float interactionWaitTime = 2f;
+    private float time;
+
+    void Awake()
+    {
+        time = interactionWaitTime;
+    }
 
     // A circle will be casted from the center of the player to its surroundings, with a radius of interactionDistance
     // It returns an array of colliders that are encompassed within the circle
@@ -12,7 +19,9 @@ public class PlayerInteraction : MonoBehaviour
     // If so, we call their Interact function, which is provided by the IInteractable interface
     void Update()
     {
-        if (input.actions["Interact"].WasPressedThisFrame())
+        time -= Time.deltaTime;
+
+        if (input.actions["Interact"].WasPressedThisFrame() && time < 0)
         {
             Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactionDistance);
             foreach (Collider2D collider in colliderArray)
