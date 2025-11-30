@@ -12,7 +12,6 @@ public class Level : MonoBehaviour
 {
     public static Level Instance { get; private set; }
     [Header("Level Specific Settings")]
-    [SerializeField] private GameObject spawnPoint;
     [SerializeField] private Collectible collectible;
     [SerializeField] private string nextScene;
 
@@ -28,6 +27,8 @@ public class Level : MonoBehaviour
     private Rigidbody2D playerRb;
     private Camera mainCamera;
     private bool isDead = false;
+    private Vector3 playerOriginalPos;
+    private Vector3 collectibleOriginalPos;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
     void Awake()
@@ -47,6 +48,8 @@ public class Level : MonoBehaviour
         playerRb = player.GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         isDead = false;
+        collectibleOriginalPos = collectible.transform.position;
+        playerOriginalPos = player.transform.position;
 
         if(nextScene == "null" || nextScene == "")
         {
@@ -91,12 +94,20 @@ public class Level : MonoBehaviour
         playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         respawnPanel.SetActive(true);
         
-        //playerSprite.enabled = false;
-        
         yield return new WaitForSeconds(respawnTime);
 
+        player.transform.position = playerOriginalPos;
+        mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, mainCamera.transform.position.z);
+        collectible.IsCollected = false;
+        collectible.transform.position = collectibleOriginalPos;
+        
         respawnTransition.SetTrigger("Respawn");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        playerRb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+
+        yield return new WaitForSeconds(0.3f);
+
         playerAnim.SetTrigger("onRespawn");
+        respawnPanel.SetActive(false);
+        isDead = false;
     }
 }

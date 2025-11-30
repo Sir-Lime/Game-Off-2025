@@ -9,7 +9,7 @@ public class Collectible : MonoBehaviour
    private Transform entityTransform;
    private PlayerController player;
    private bool isCollected = false;
-   public bool IsCollected { get { return isCollected; } }
+   public bool IsCollected { get { return isCollected; } set { isCollected = value; } }
 
     void Update()
     {
