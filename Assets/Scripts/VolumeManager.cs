@@ -37,7 +37,11 @@ public class VolumeManager : MonoBehaviour
     {
         float masterVol, musicVol, SFXVol;
         if (!PlayerPrefs.HasKey("MASTER") || !PlayerPrefs.HasKey("MUSIC") || !PlayerPrefs.HasKey("SFX"))
-            masterVol = musicVol = SFXVol = 1;
+            {
+                masterVol = 1;
+                musicVol = 0.5f;
+                SFXVol = 1;
+            }
         else
         {
             masterVol = PlayerPrefs.GetFloat("MASTER");
