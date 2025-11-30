@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class mainMenuUI : MonoBehaviour
 {
@@ -11,8 +13,11 @@ public class mainMenuUI : MonoBehaviour
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXslider; 
+    [SerializeField] private VolumeManager volumeManager;
+    private PlayerInput input;
 
-    void Start() {
+    void Start() 
+    {
         if (!PlayerPrefs.HasKey("MASTER")) {
             PlayerPrefs.SetFloat("MASTER", 1);
             PlayerPrefs.SetFloat("SFX", 1);
@@ -21,10 +26,22 @@ public class mainMenuUI : MonoBehaviour
         masterSlider.value = PlayerPrefs.GetFloat("MASTER");
         musicSlider.value = PlayerPrefs.GetFloat("MUSIC");
         SFXslider.value = PlayerPrefs.GetFloat("SFX");
+        input = gameObject.GetComponent<PlayerInput>();
     }
 
-    void Update() {
-
+    void Update() 
+    {
+        if(input.actions["Leaderboard"].WasPerformedThisFrame()) 
+        {
+            if (!leaderboardPanel.activeSelf)
+            {
+                leaderboardButton();
+            }
+            else
+            {
+                quitLeaderboardButton();
+            }
+        }
     }
 
     public void playButton() {
@@ -49,16 +66,24 @@ public class mainMenuUI : MonoBehaviour
         settingsPanel.SetActive(false);
         mainPanel.SetActive(true);
     }
+    public void quitCreditsButton() {
+        creditsPanel.SetActive(false); 
+        mainPanel.SetActive(true);
+    }
+    public void quitLeaderboardButton() {
+        leaderboardPanel.SetActive(false); 
+        mainPanel.SetActive(true);
+    }
     public void changeMasterSlider() {
         PlayerPrefs.SetFloat("MASTER",masterSlider.value);
-        // lime pls do the sounds shit 
+        volumeManager.SetMasterVolume();
     }
     public void changeMusicSlider() {
         PlayerPrefs.SetFloat("MUSIC", musicSlider.value);
-        // lime pls do the sounds shit 
+        volumeManager.SetMusicVolume();
     }
     public void changeSFXslider() {
         PlayerPrefs.SetFloat("SFX", SFXslider.value); 
-        // lime pls do the sounds shit 
+        volumeManager.SetSFXVolume();
     }
 }
