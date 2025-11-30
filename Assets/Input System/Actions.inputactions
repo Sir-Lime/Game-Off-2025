@@ -237,6 +237,17 @@
                 },
                 {
                     "name": "",
+                    "id": "519ba1ca-e0d6-46db-bb91-1c38b914a756",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "934a5a6a-6476-44c0-a08a-f4e13ccd8a68",
                     "path": "<Keyboard>/e",
                     "interactions": "",
