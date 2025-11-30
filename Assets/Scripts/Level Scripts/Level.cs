@@ -35,10 +35,8 @@ public class Level : MonoBehaviour
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
-        {
             Instance = this;
            //DontDestroyOnLoad(gameObject);
-        }
     }
 
     private void Start() {
@@ -49,7 +47,6 @@ public class Level : MonoBehaviour
         playerRb = player.GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         isDead = false;
-
 
         if(nextScene == "null" || nextScene == "")
         {
