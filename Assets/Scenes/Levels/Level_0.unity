@@ -27312,7 +27312,6 @@ MonoBehaviour:
   input: {fileID: 705768214}
   pauseMenu: {fileID: 214615970}
   settingsPanel: {fileID: 1036837693}
-  leaderboardPanel: {fileID: 0}
   masterSlider: {fileID: 2133439292}
   musicSlider: {fileID: 1144134338}
   SFXslider: {fileID: 1838031828}
@@ -31255,8 +31254,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1497117049}
     - target: {fileID: 4741885907358327069, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741885907358327069, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889577738342832803, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955446790087497668, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5084320601553430664, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -31291,8 +31302,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6383697347639195023, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6383697347639195023, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6383697347639195023, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6682179567024305961, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -31349,6 +31368,10 @@ PrefabInstance:
     - target: {fileID: 7389506188768742318, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_Name
       value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389506188768742318, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7474928796425642332, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_Value
@@ -31413,6 +31436,10 @@ PrefabInstance:
     - target: {fileID: 8966301929307336570, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039652119316714779, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9039652119316714779, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
