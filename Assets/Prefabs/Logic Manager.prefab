@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 2628483815023679938}
   - component: {fileID: 4330618538235063737}
   - component: {fileID: 6571898184901269433}
+  - component: {fileID: 2278683652586703429}
   m_Layer: 0
   m_Name: Logic Manager
   m_TagString: Logic
@@ -195,3 +196,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750bc2b3fccdf33368cbd748f641eb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2278683652586703429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413718385256321167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a937b251a0cd0c289b0a4e6bb03f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 24100000, guid: c6a32443e9da7eafcadc85761ff52aea, type: 2}
+  Masterslider: {fileID: 0}
+  Musicslider: {fileID: 0}
+  SFXslider: {fileID: 0}

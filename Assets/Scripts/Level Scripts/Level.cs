@@ -80,10 +80,10 @@ public class Level : MonoBehaviour
     {
         if(!isDead)
         {
-            isDead = true;
             playerAnim.SetTrigger("onDeath");
-            StartCoroutine(Respawn()); 
             SFXScript.instance.deathSFX();
+            isDead = true;
+            StartCoroutine(Respawn()); 
         } 
     }
     
