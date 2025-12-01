@@ -68,7 +68,9 @@ public class UIscript : MonoBehaviour
         pauseMenu.SetActive(false); 
      //   leaderboardPanel.SetActive(true);
     }
-    public void quitToMain() {
+    public void quitToMain() 
+    {
+        resumeButton();
         SceneManager.LoadScene(0); 
     }
 
