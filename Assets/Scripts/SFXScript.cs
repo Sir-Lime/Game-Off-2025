@@ -91,7 +91,7 @@ public class SFXScript : MonoBehaviour
     }
     public void pickUpSFX()
     {
-        PlaySFX(pickUpSound, transform, 2, Random.Range(0.8f, 1.2f));
+        PlaySFX(pickUpSound, transform, 0.6f, Random.Range(0.8f, 1.2f));
     }
     public void spawnSFX()
     {
