@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEditor.Tilemaps;
 
 
 public class Level : MonoBehaviour
@@ -29,11 +30,14 @@ public class Level : MonoBehaviour
     private bool isDead = false;
     private Vector3 playerOriginalPos;
     private Vector3 collectibleOriginalPos;
+    public float levelStartTime;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
     void Awake()
     {
         collectible = GameObject.FindWithTag("Tape").GetComponent<Collectible>();
+        levelStartTime = TimerManager.Instance.GetTime(false);
+        TimerManager.Instance.startTime = levelStartTime;
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
@@ -62,6 +66,11 @@ public class Level : MonoBehaviour
     {
         scenePanel.SetActive(true);
         StartCoroutine(LoadLevel());
+        if (nextScene == "mainMenuScene") 
+        {
+            TimerManager.Instance.StopAndSave();
+
+        }
     }
     
     IEnumerator LoadLevel()
@@ -110,5 +119,6 @@ public class Level : MonoBehaviour
         playerAnim.SetTrigger("onRespawn");
         respawnPanel.SetActive(false);
         isDead = false;
+        TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true) -  levelStartTime;
     }
 }

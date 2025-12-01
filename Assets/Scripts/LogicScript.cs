@@ -7,6 +7,7 @@ public class LogicScript : MonoBehaviour
 {
     void Awake()
     {
+        
     }
     void Start()
     {
