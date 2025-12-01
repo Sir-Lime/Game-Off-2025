@@ -64,4 +64,5 @@ public class Laser : MonoBehaviour
     {
         isFiring = true;   
     }
+    
 }
