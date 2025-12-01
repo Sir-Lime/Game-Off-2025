@@ -6,13 +6,14 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEditor.Tilemaps;
+using System.Linq;
 
 
 public class Level : MonoBehaviour
 {
     public static Level Instance { get; private set; }
     [Header("Level Specific Settings")]
-    [SerializeField] private GameObject spawnPoint;
     [SerializeField] private Collectible collectible;
     [SerializeField] private string nextScene;
 
@@ -28,15 +29,26 @@ public class Level : MonoBehaviour
     private Rigidbody2D playerRb;
     private Camera mainCamera;
     private bool isDead = false;
+    private Vector3 playerOriginalPos;
+    private Vector3 collectibleOriginalPos;
+    public float levelStartTime;
+    private IActivatable[] activators;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
     void Awake()
     {
+        collectible = GameObject.FindWithTag("Tape").GetComponent<Collectible>();
+        player = GameObject.FindWithTag("Player");
+        levelStartTime = TimerManager.Instance.GetTime(false);
+        TimerManager.Instance.startTime = levelStartTime;
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
             Instance = this;
            //DontDestroyOnLoad(gameObject);
+
+        // Query gameObjects that implement that IActivable interface
+        activators = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IActivatable>().ToArray();
     }
 
     private void Start() {
@@ -47,6 +59,8 @@ public class Level : MonoBehaviour
         playerRb = player.GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         isDead = false;
+        collectibleOriginalPos = collectible.transform.position;
+        playerOriginalPos = player.transform.position;
 
         if(nextScene == "null" || nextScene == "")
         {
@@ -58,9 +72,14 @@ public class Level : MonoBehaviour
     {
         scenePanel.SetActive(true);
         StartCoroutine(LoadLevel());
+        if (nextScene == "mainMenuScene") 
+        {
+            TimerManager.Instance.StopAndSave();
+
+        }
     }
     
-    IEnumerator LoadLevel()
+    private IEnumerator LoadLevel()
     {
         sceneTransition.SetTrigger("Start");
 
@@ -73,30 +92,47 @@ public class Level : MonoBehaviour
         playerAnim.SetTrigger("onRespawn");
     }
 
+    public void ReloadLevel()
+    {
+        foreach(var obj in activators)
+        {
+            obj.ResetState();
+        }
+    }
+
     public void KillPlayer()
     {
         if(!isDead)
         {
-            isDead = true;
             playerAnim.SetTrigger("onDeath");
-            StartCoroutine(Respawn()); 
             SFXScript.instance.deathSFX();
+            isDead = true;
+            StartCoroutine(Respawn()); 
         } 
     }
     
-    IEnumerator Respawn()
+    private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(0.3f);
 
         playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         respawnPanel.SetActive(true);
         
-        //playerSprite.enabled = false;
-        
         yield return new WaitForSeconds(respawnTime);
 
+        player.transform.position = playerOriginalPos;
+        mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, mainCamera.transform.position.z);
+        collectible.IsCollected = false;
+        collectible.transform.position = collectibleOriginalPos;
+        
         respawnTransition.SetTrigger("Respawn");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        playerRb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+
+        yield return new WaitForSeconds(0.3f);
+
         playerAnim.SetTrigger("onRespawn");
+        respawnPanel.SetActive(false);
+        isDead = false;
+        TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true) -  levelStartTime;
     }
 }

@@ -1,7 +1,10 @@
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class CameraFocusScript : MonoBehaviour
@@ -18,6 +21,7 @@ public class CameraFocusScript : MonoBehaviour
         return new Rect(center - size * 0.5f, size);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         var rect = GetRect();
@@ -43,6 +47,7 @@ public class CameraFocusScript : MonoBehaviour
         Handles.color = color;
         Handles.DrawBezier(p1, p2, p1, p2, color, null, thickness);
     }
+#endif
 }
 
 #if UNITY_EDITOR

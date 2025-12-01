@@ -18,7 +18,8 @@ public class SFXScript : MonoBehaviour
     [SerializeField] private AudioClip pressurePlateSound;
     [SerializeField] private AudioClip pickUpSound;
     [SerializeField] private AudioClip spawnSound;
-    [SerializeField] private AudioClip walkSound;    [SerializeField] private Slider Masterslider;
+    [SerializeField] private AudioClip walkSound;    
+    [SerializeField] private Slider Masterslider;
     [SerializeField] private Slider MusicSlider;
     [SerializeField] private Slider SFXSlider;
 
@@ -90,7 +91,7 @@ public class SFXScript : MonoBehaviour
     }
     public void pickUpSFX()
     {
-        PlaySFX(pickUpSound, transform, 1, Random.Range(0.8f, 1.2f));
+        PlaySFX(pickUpSound, transform, 2, Random.Range(0.8f, 1.2f));
     }
     public void spawnSFX()
     {

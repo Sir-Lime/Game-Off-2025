@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
 
 public class mainMenuUI : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class mainMenuUI : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXslider; 
     [SerializeField] private VolumeManager volumeManager;
+    public TMP_InputField nameField;
+    public GameObject nameFieldObject;
+
     private PlayerInput input;
 
     void Start() 
@@ -85,5 +89,15 @@ public class mainMenuUI : MonoBehaviour
     public void changeSFXslider() {
         PlayerPrefs.SetFloat("SFX", SFXslider.value); 
         volumeManager.SetSFXVolume();
+    }
+    public void StoreInputText()
+    {
+        PlayerPrefs.SetString("Name", nameField.text);
+        Debug.Log( PlayerPrefs.GetString("Name"));
+        string userName = PlayerPrefs.GetString("Name", "nullName");
+        if (userName != "nullName")
+        {
+            nameFieldObject.SetActive(false);
+        }
     }
 }

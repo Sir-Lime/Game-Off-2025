@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PressurePlateScript : MonoBehaviour
+public class PressurePlateScript : MonoBehaviour, IActivatable
 {
     public SpriteRenderer sr;
     public Sprite activatedSprite;
@@ -85,5 +85,10 @@ public class PressurePlateScript : MonoBehaviour
         sr.sprite = activatedSprite;
         ind_sr.sprite = ind_activatedSprite;
         ind_sr.color = Color.green;
+    }
+
+    public void ResetState()
+    {
+        DeactivatePlate();
     }
 }

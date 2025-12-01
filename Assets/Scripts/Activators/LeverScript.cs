@@ -2,7 +2,7 @@ using playerController;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class LeverScript : MonoBehaviour
+public class LeverScript : MonoBehaviour, IActivatable
 {
     private SpriteRenderer spriteRenderer;
     public Sprite activatedSprite;
@@ -10,12 +10,16 @@ public class LeverScript : MonoBehaviour
     private bool isTouching = false;
     private PlayerController pc;
     private bool executed = false;
+    private string originalState;
+    private Sprite originalSprite;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         GameObject obj = GameObject.FindGameObjectWithTag("Player");
         pc = obj.GetComponent<PlayerController>();
+        originalState = gameObject.tag;
+        originalSprite = spriteRenderer.sprite;
     }
     void Update()
     {
@@ -46,5 +50,12 @@ public class LeverScript : MonoBehaviour
     {
         isTouching = false;
         executed = false;
-    } 
+    }
+
+    public void ResetState()
+    {
+        spriteRenderer.sprite = originalSprite;
+        gameObject.tag = originalState;
+        executed = false;
+    }
 }

@@ -3,7 +3,6 @@ using UnityEngine.Windows;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 public class UIscript : MonoBehaviour
 {
     [SerializeField] private PlayerInput input;
@@ -14,6 +13,7 @@ public class UIscript : MonoBehaviour
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXslider; 
+
 
     void Start() {
         if (!PlayerPrefs.HasKey("MASTER")) {
