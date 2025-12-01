@@ -24,12 +24,12 @@ public class Laser : MonoBehaviour
             {
                 if (activator.CompareTag("Deactivated"))
                 {
-                    isActivated = false;
+                    isActivated = true;
                     break;
                 }
                 if(activator.CompareTag("Activated")) 
                 {
-                    isActivated = true;
+                    isActivated = false;
                 }
             }
         }
