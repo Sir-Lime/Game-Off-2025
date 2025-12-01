@@ -7,6 +7,7 @@ using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEditor.Tilemaps;
+using System.Linq;
 
 
 public class Level : MonoBehaviour
@@ -31,6 +32,7 @@ public class Level : MonoBehaviour
     private Vector3 playerOriginalPos;
     private Vector3 collectibleOriginalPos;
     public float levelStartTime;
+    private IActivatable[] activators;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
     void Awake()
@@ -43,6 +45,9 @@ public class Level : MonoBehaviour
         else
             Instance = this;
            //DontDestroyOnLoad(gameObject);
+
+        // Query gameObjects that implement that IActivable interface
+        activators = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IActivatable>().ToArray();
     }
 
     private void Start() {
@@ -73,7 +78,7 @@ public class Level : MonoBehaviour
         }
     }
     
-    IEnumerator LoadLevel()
+    private IEnumerator LoadLevel()
     {
         sceneTransition.SetTrigger("Start");
 
@@ -84,6 +89,14 @@ public class Level : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         playerAnim.SetTrigger("onRespawn");
+    }
+
+    public void ReloadLevel()
+    {
+        foreach(var obj in activators)
+        {
+            obj.ResetState();
+        }
     }
 
     public void KillPlayer()
@@ -97,7 +110,7 @@ public class Level : MonoBehaviour
         } 
     }
     
-    IEnumerator Respawn()
+    private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(0.3f);
 

@@ -1,7 +1,7 @@
         using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ButtonScript : MonoBehaviour, IInteractable
+public class ButtonScript : MonoBehaviour, IInteractable, IActivatable
 {
     [SerializeField] private float activeDuration = 3f;
     [SerializeField] private float deactiveDuration = 3f; 
@@ -16,7 +16,8 @@ public class ButtonScript : MonoBehaviour, IInteractable
     public SpriteRenderer spriteRenderer;
     private Color AColor; 
     private Color DColor; 
-
+    private bool originalState;
+    private Color originalSpriteColor;
     public void Awake()
     {
         AColor = Color.green;
@@ -26,6 +27,9 @@ public class ButtonScript : MonoBehaviour, IInteractable
             spriteRenderer.color = AColor;
         else
             spriteRenderer.color = DColor;
+
+        originalState = isActive;
+        originalSpriteColor = spriteRenderer.color;
     }
     public void Interact(GameObject sender)
     {
@@ -70,5 +74,11 @@ public class ButtonScript : MonoBehaviour, IInteractable
         timer = autoActivation ? deactiveDuration : 0f;
         spriteRenderer.color = DColor;
         SFXScript.instance.buttonSFX();
+    }
+
+    public void ResetState()
+    {
+        isActive = originalState;
+        spriteRenderer.color = originalSpriteColor;
     }
 }
