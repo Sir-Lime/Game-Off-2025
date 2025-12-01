@@ -36317,8 +36317,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2
-    height: 2.6666667
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -39333,11 +39333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4c1488de9b04ad29e005ca0d5ecefb, type: 3}
---- !u!1 &1314720346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2537373645135258671, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
-  m_PrefabInstance: {fileID: 1426517425}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1319398323 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2550354933324990202, guid: 4a276bc67edd1026a92d2b5f6b452b3a, type: 3}
@@ -39622,7 +39617,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 163233584}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8659030612169614, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+    - {fileID: 2537373645135258671, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
@@ -40531,7 +40528,7 @@ MonoBehaviour:
   input: {fileID: 163233583}
   pauseMenu: {fileID: 457820771}
   settingsPanel: {fileID: 1215493551}
-  leaderboardPanel: {fileID: 1314720346}
+  leaderboardPanel: {fileID: 0}
   masterSlider: {fileID: 591689199}
   musicSlider: {fileID: 1838764687}
   SFXslider: {fileID: 1516395973}
