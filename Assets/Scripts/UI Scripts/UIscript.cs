@@ -9,7 +9,7 @@ public class UIscript : MonoBehaviour
     private bool paused = false;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private GameObject leaderboardPanel;
+   // [SerializeField] private GameObject leaderboardPanel;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXslider; 
@@ -41,7 +41,7 @@ public class UIscript : MonoBehaviour
                 Time.timeScale = 0; paused = true;
             }
         }
-        if (input.actions["Leaderboard"].WasPerformedThisFrame() && paused) 
+       /* if (input.actions["Leaderboard"].WasPerformedThisFrame() && paused) 
         {
             if (!leaderboardPanel.activeSelf)
             {
@@ -51,13 +51,13 @@ public class UIscript : MonoBehaviour
             {
                 quitLeaderboard();
             }
-        }
+        }*/
     }
 
     public void resumeButton() {
         pauseMenu.SetActive(false);
         settingsPanel.SetActive(false);
-        leaderboardPanel.SetActive(false);
+       // leaderboardPanel.SetActive(false);
         Time.timeScale = 1; paused = false;
     }
     public void settingsButton() {
@@ -66,7 +66,7 @@ public class UIscript : MonoBehaviour
     }
     public void leaderboardButton() {
         pauseMenu.SetActive(false); 
-        leaderboardPanel.SetActive(true);
+     //   leaderboardPanel.SetActive(true);
     }
     public void quitToMain() {
         SceneManager.LoadScene(0); 
@@ -93,7 +93,7 @@ public class UIscript : MonoBehaviour
     }
         public void quitLeaderboard() 
         {
-        leaderboardPanel.SetActive(false); 
+      //  leaderboardPanel.SetActive(false); 
         pauseMenu.SetActive(true);
         }
 }
