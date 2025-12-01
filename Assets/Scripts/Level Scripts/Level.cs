@@ -111,6 +111,8 @@ public class Level : MonoBehaviour
     {
         if(!isDead)
         {
+            CameraScript.Instance.ShakeCamera(0.3f, 0.3f);
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             playerAnim.SetTrigger("onDeath");
             SFXScript.instance.deathSFX();
             isDead = true;
@@ -136,6 +138,7 @@ public class Level : MonoBehaviour
         playerRb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
 
         yield return new WaitForSeconds(0.3f);
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
         playerAnim.SetTrigger("onRespawn");
         respawnPanel.SetActive(false);

@@ -6,9 +6,23 @@ using UnityEngine.Rendering.Universal;
 [RequireComponent(typeof(PixelPerfectCamera))]
 public class CameraScript : MonoBehaviour
 {
+    // -------------------- SINGLETON --------------------
+    public static CameraScript Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    // -------------------- EXISTING FIELDS --------------------
     public playerController.PlayerController playerController;
     [SerializeField] private Transform followTarget;
-    [SerializeField] public float followSpeedX = 5f; // changed from private to public for pause menu 
+    [SerializeField] public float followSpeedX = 5f;
     [SerializeField] public float followSpeedY = 5f;
     [SerializeField] private float yOffsetPos = 2f;
     [SerializeField] private float xOffsetPos = 3f;
@@ -17,32 +31,88 @@ public class CameraScript : MonoBehaviour
     private CameraFocusScript[] cameraFocusNodes;
     private PixelPerfectCamera ppCamera;
     private int resolutionX, resolutionY;
+    private Vector3 originalLocalPos;
 
+    // -------------------- CAMERA SHAKE --------------------
+    [Header("Camera Shake")]
+    [SerializeField] private float shakeDecay = 1.8f;
+
+    private float shakeTimer = 0f;
+    private float shakeIntensity = 0f;
+    private Vector3 shakeOffset = Vector3.zero;
+
+    // -------------------- UNITY --------------------
     private void Start()
     {
-        cameraFocusNodes = GameObject.FindGameObjectsWithTag("CameraFocus").Select(obj => obj.GetComponent<CameraFocusScript>()).ToArray(); 
+        cameraFocusNodes = GameObject.FindGameObjectsWithTag("CameraFocus")
+            .Select(obj => obj.GetComponent<CameraFocusScript>())
+            .ToArray();
+
         ppCamera = GetComponent<PixelPerfectCamera>();
-        
-        resolutionX = ppCamera.refResolutionX / ppCamera.assetsPPU; 
+
+        resolutionX = ppCamera.refResolutionX / ppCamera.assetsPPU;
         resolutionY = ppCamera.refResolutionY / ppCamera.assetsPPU;
+
+        originalLocalPos = transform.localPosition;
     }
 
     private void FixedUpdate()
     {
-        if (playerController.facingDir == 1f) xOffset = xOffsetPos; else xOffset = -xOffsetPos;
-        float yOffset;
-        if (input.actions["Down"].IsPressed()) yOffset = -yOffsetPos; 
-        else yOffset = yOffsetPos;
+        if (playerController.facingDir == 1f)
+            xOffset = xOffsetPos;
+        else
+            xOffset = -xOffsetPos;
 
-        var target = new Vector2(followTarget.position.x + xOffset, followTarget.position.y + yOffset);
+        float yOffset = input.actions["Down"].IsPressed() ? -yOffsetPos : yOffsetPos;
+
+        var target = new Vector2(
+            followTarget.position.x + xOffset,
+            followTarget.position.y + yOffset
+        );
+
         target = GetFocusedTarget(target);
 
         float smoothedX = Mathf.Lerp(transform.position.x, target.x, followSpeedX * Time.deltaTime);
         float smoothedY = Mathf.Lerp(transform.position.y, target.y, followSpeedY * Time.deltaTime);
         Vector3 newPos = new Vector3(smoothedX, smoothedY, transform.position.z);
-        transform.position = newPos;
+
+        // -------------------- APPLY CAMERA SHAKE --------------------
+        HandleCameraShake();
+
+        transform.localPosition = new Vector3(newPos.x, newPos.y, newPos.z) + shakeOffset;
     }
 
+    // -------------------- SHAKE LOGIC --------------------
+    public void ShakeCamera(float intensity, float duration)
+    {
+        shakeIntensity = Mathf.Max(shakeIntensity, intensity);
+        shakeTimer = Mathf.Max(shakeTimer, duration);
+    }
+
+    private void HandleCameraShake()
+    {
+        if (shakeTimer > 0f)
+        {
+            shakeTimer -= Time.deltaTime;
+
+            float current = shakeIntensity;
+
+            shakeOffset = new Vector3(
+                Random.Range(-current, current),
+                Random.Range(-current, current),
+                0f
+            );
+
+            shakeIntensity = Mathf.Lerp(shakeIntensity, 0f, shakeDecay * Time.deltaTime);
+        }
+        else
+        {
+            shakeOffset = Vector3.zero;
+            shakeIntensity = 0f;
+        }
+    }
+
+    // -------------------- FOCUS ZONE LOGIC --------------------
     private Vector2 GetFocusedTarget(Vector2 target)
     {
         foreach (CameraFocusScript focusNode in cameraFocusNodes)
@@ -64,16 +134,18 @@ public class CameraScript : MonoBehaviour
                 target.x = Mathf.Clamp(target.x, minX, maxX);
                 target.y = Mathf.Clamp(target.y, minY, maxY);
 
-                // If the CameraFocus rectangle is too thin, then simply center the camera in the middle of it.
-                if (focusNode.lockTop && focusNode.lockBottom && focusRect.height < resolutionY) target.y = focusRect.center.y;
-                if (focusNode.lockRight && focusNode.lockLeft && focusRect.width < resolutionX) target.x = focusRect.center.x;
+                if (focusNode.lockTop && focusNode.lockBottom && focusRect.height < resolutionY)
+                    target.y = focusRect.center.y;
 
-                if (input.actions["Down"].IsPressed()) target.y = followTarget.position.y - yOffsetPos;
+                if (focusNode.lockRight && focusNode.lockLeft && focusRect.width < resolutionX)
+                    target.x = focusRect.center.x;
+
+                if (input.actions["Down"].IsPressed())
+                    target.y = followTarget.position.y - yOffsetPos;
 
                 break;
             }
         }
-
         return target;
     }
 }
