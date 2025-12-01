@@ -13,7 +13,7 @@ public class Level : MonoBehaviour
 {
     public static Level Instance { get; private set; }
     [Header("Level Specific Settings")]
-    private Collectible collectible;
+    [SerializeField] private Collectible collectible;
     [SerializeField] private string nextScene;
 
     [Header("Transition Settings")]
@@ -90,10 +90,10 @@ public class Level : MonoBehaviour
     {
         if(!isDead)
         {
-            isDead = true;
             playerAnim.SetTrigger("onDeath");
-            StartCoroutine(Respawn()); 
             SFXScript.instance.deathSFX();
+            isDead = true;
+            StartCoroutine(Respawn()); 
         } 
     }
     
