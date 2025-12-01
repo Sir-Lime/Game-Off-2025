@@ -12,7 +12,7 @@ public class Level : MonoBehaviour
 {
     public static Level Instance { get; private set; }
     [Header("Level Specific Settings")]
-    [SerializeField] private Collectible collectible;
+    private Collectible collectible;
     [SerializeField] private string nextScene;
 
     [Header("Transition Settings")]
@@ -33,6 +33,7 @@ public class Level : MonoBehaviour
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
     void Awake()
     {
+        collectible = GameObject.FindWithTag("Tape").GetComponent<Collectible>();
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
