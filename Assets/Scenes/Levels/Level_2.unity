@@ -22365,7 +22365,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1622593760}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8659030612169614, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+    - {fileID: 2537373645135258671, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
@@ -25960,11 +25962,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9086592593568614251, guid: d74a16f41f1117e34b1da55225838b83, type: 3}
   m_PrefabInstance: {fileID: 1420556829}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1421863002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2537373645135258671, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
-  m_PrefabInstance: {fileID: 838622430}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1440959903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4129991105213025051, guid: 9fea54c9683e8c736b8821ae7cd53915, type: 3}
@@ -26200,7 +26197,7 @@ MonoBehaviour:
   input: {fileID: 1622593762}
   pauseMenu: {fileID: 75725517}
   settingsPanel: {fileID: 1389628914}
-  leaderboardPanel: {fileID: 1421863002}
+  leaderboardPanel: {fileID: 0}
   masterSlider: {fileID: 1901516892}
   musicSlider: {fileID: 1516766242}
   SFXslider: {fileID: 825999902}
