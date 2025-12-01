@@ -24044,11 +24044,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750bc2b3fccdf33368cbd748f641eb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1247165400 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2537373645135258671, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
-  m_PrefabInstance: {fileID: 2027056508}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1247896253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24735,7 +24730,7 @@ MonoBehaviour:
   input: {fileID: 1237146129}
   pauseMenu: {fileID: 1352450703}
   settingsPanel: {fileID: 8514797}
-  leaderboardPanel: {fileID: 1247165400}
+  leaderboardPanel: {fileID: 0}
   masterSlider: {fileID: 1823312643}
   musicSlider: {fileID: 372459265}
   SFXslider: {fileID: 33009964}
@@ -25650,7 +25645,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1237146127}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8659030612169614, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
+    - {fileID: 2537373645135258671, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8288efdf706c0b79b931bb3f6bc9149f, type: 3}
