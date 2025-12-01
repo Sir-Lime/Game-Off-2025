@@ -40,7 +40,7 @@ public class Level : MonoBehaviour
         collectible = GameObject.FindWithTag("Tape").GetComponent<Collectible>();
         player = GameObject.FindWithTag("Player");
         levelStartTime = TimerManager.Instance.GetTime(false);
-        TimerManager.Instance.startTime = levelStartTime;
+        TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true);
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
