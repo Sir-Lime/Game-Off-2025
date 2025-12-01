@@ -1,0 +1,435 @@
+fileFormatVersion: 2
+guid: da5968040c224b534a0f46e468f00701
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8584213074184600750
+    second: AnotherTileset_0
+  - first:
+      213: -1108929312597020617
+    second: AnotherTileset_1
+  - first:
+      213: 7683405547575156735
+    second: AnotherTileset_2
+  - first:
+      213: 6914110710143150545
+    second: AnotherTileset_3
+  - first:
+      213: 1907133910260351654
+    second: AnotherTileset_4
+  - first:
+      213: -7668312724038406756
+    second: AnotherTileset_5
+  - first:
+      213: 8890609922262411904
+    second: AnotherTileset_6
+  - first:
+      213: -7677173949239750569
+    second: AnotherTileset_7
+  - first:
+      213: -526917681413758570
+    second: AnotherTileset_8
+  - first:
+      213: 3725870883483101742
+    second: AnotherTileset_9
+  - first:
+      213: -9100557521736673568
+    second: AnotherTileset_10
+  - first:
+      213: -5817479194127806258
+    second: AnotherTileset_11
+  - first:
+      213: 437107422138316172
+    second: AnotherTileset_12
+  - first:
+      213: 907273797383675649
+    second: AnotherTileset_13
+  - first:
+      213: -9197992690883522924
+    second: AnotherTileset_14
+  - first:
+      213: 689290526383593410
+    second: AnotherTileset_15
+  - first:
+      213: 1182829305523052693
+    second: AnotherTileset_16
+  - first:
+      213: -7684949073831136245
+    second: AnotherTileset_17
+  - first:
+      213: 9160669261827454911
+    second: AnotherTileset_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AnotherTileset_8
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 162
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 691e575192300b8f0800000000000000
+      internalID: -526917681413758570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnotherTileset_16
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 590af998cf04a6010800000000000000
+      internalID: 1182829305523052693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnotherTileset_17
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b04f351b883995590800000000000000
+      internalID: -7684949073831136245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: a
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 162
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d02ff87e270a85aeb8314c4f39eb74f
+      internalID: -8584213074184600750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: c
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2deb3057b247540859a2685cb811f9ee
+      internalID: -1108929312597020617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: b
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72ff87da1c1ee66f0b0a463d61df7405
+      internalID: 7683405547575156735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnotherTileset_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 19
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef1bcaa338f3d4bbabd6edd4a168e122
+      internalID: 6914110710143150545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnotherTileset_4
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 19
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e0e26d7ee9710fa9806e01142a16f7c
+      internalID: 1907133910260351654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnotherTileset_5
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 19
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7b9fda4b5639907a04dfb66805dac1
+      internalID: -7668312724038406756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnotherTileset_6
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822cb8c78c6b7aee3892cdf6e9d63891
+      internalID: 8890609922262411904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnotherTileset_7
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4067b3b3d5699f8e0ba27e66f245a046
+      internalID: -7677173949239750569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: aab4e92e605f688fb9a744164b6c6eae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AnotherTileset_10: -9100557521736673568
+      AnotherTileset_11: -5817479194127806258
+      AnotherTileset_12: 437107422138316172
+      AnotherTileset_13: 907273797383675649
+      AnotherTileset_14: -9197992690883522924
+      AnotherTileset_15: 689290526383593410
+      AnotherTileset_16: 1182829305523052693
+      AnotherTileset_17: -7684949073831136245
+      AnotherTileset_18: 9160669261827454911
+      AnotherTileset_3: 6914110710143150545
+      AnotherTileset_4: 1907133910260351654
+      AnotherTileset_5: -7668312724038406756
+      AnotherTileset_6: 8890609922262411904
+      AnotherTileset_7: -7677173949239750569
+      AnotherTileset_8: -526917681413758570
+      AnotherTileset_9: 3725870883483101742
+      a: -8584213074184600750
+      b: 7683405547575156735
+      c: -1108929312597020617
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

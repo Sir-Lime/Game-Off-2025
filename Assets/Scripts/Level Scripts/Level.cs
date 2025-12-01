@@ -38,6 +38,7 @@ public class Level : MonoBehaviour
     void Awake()
     {
         collectible = GameObject.FindWithTag("Tape").GetComponent<Collectible>();
+        player = GameObject.FindWithTag("Player");
         levelStartTime = TimerManager.Instance.GetTime(false);
         TimerManager.Instance.startTime = levelStartTime;
         if (Instance != null && Instance != this)
