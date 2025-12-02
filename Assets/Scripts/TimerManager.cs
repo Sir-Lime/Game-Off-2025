@@ -5,10 +5,13 @@ public class TimerManager : MonoBehaviour
     public static TimerManager Instance;
     public float startTime;
     private bool isTiming = false;
+    public float currentTime;
+    public float levelEndTime = 0f;
+    public float deathTime;
+    public float time;
 
     private void Awake()
     {
-        // Singleton setup
         if (Instance == null)
         {
             Instance = this;
@@ -23,20 +26,15 @@ public class TimerManager : MonoBehaviour
 
     private void Start()
     {
-        // Start the run the moment the first scene loads
-        startTime = Time.time;
         isTiming = true;
     }
 
-    public float GetTime(bool raw = false)
+    public float GetTime()
     {
         if (!isTiming) return 0f;
-        if (raw) return Time.time;
-        return Time.time - startTime;
+        return currentTime;
     }
-    public void Update()
-    {
-    }
+
 
     public void StopAndSave()
     {
