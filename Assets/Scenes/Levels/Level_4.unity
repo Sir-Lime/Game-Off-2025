@@ -23814,6 +23814,7 @@ MonoBehaviour:
   yOffsetPos: 2
   xOffsetPos: 3
   input: {fileID: 1845099021}
+  shakeDecay: 1.8
 --- !u!4 &593160026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5465751812332586536, guid: 000cb27a94589b995b7756afc047c41b, type: 3}
@@ -25662,7 +25663,7 @@ MonoBehaviour:
   leverSound: {fileID: 8300000, guid: f0e5f8bace2680f1baa03552ba19e2b1, type: 3}
   portalSound: {fileID: 8300000, guid: 734c1a88d7b609008972c4fdc83c82c0, type: 3}
   pressurePlateSound: {fileID: 8300000, guid: 24e3e2a89f766690aa1f8a7b07076ddf, type: 3}
-  pickUpSound: {fileID: 8300000, guid: 6ad91f60e2b629c37b8e74ccfb45c528, type: 3}
+  pickUpSound: {fileID: 8300000, guid: cf67145295d5643cfb503f2cb60cd9d1, type: 3}
   spawnSound: {fileID: 8300000, guid: ff5fac803d42ea7a1826f54595d36c43, type: 3}
   walkSound: {fileID: 8300000, guid: 3335cfb632a62adbcbe544218d58d671, type: 3}
   Masterslider: {fileID: 5372834559603819889}
@@ -25830,7 +25831,6 @@ MonoBehaviour:
   input: {fileID: 1845099021}
   pauseMenu: {fileID: 60485377}
   settingsPanel: {fileID: 3007019706862760002}
-  leaderboardPanel: {fileID: 0}
   masterSlider: {fileID: 5372834559603819889}
   musicSlider: {fileID: 7988945444325288073}
   SFXslider: {fileID: 5619809668707640905}
