@@ -20723,8 +20723,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2
-    height: 2.6666667
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -25126,7 +25126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6890539772880078008, guid: 9fea54c9683e8c736b8821ae7cd53915, type: 3}
       propertyPath: isActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6890539772880078008, guid: 9fea54c9683e8c736b8821ae7cd53915, type: 3}
       propertyPath: autoDeactivation

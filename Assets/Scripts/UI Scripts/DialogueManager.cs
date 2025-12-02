@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
 using UnityEngine.Events;
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine.UI;
 using UnityEngine.Animations;
 using playerController;

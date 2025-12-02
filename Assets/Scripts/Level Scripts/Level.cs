@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
-using UnityEditor.Tilemaps;
 using System.Linq;
 
 
@@ -104,7 +103,8 @@ public class Level : MonoBehaviour
     {
         if(!isDead)
         {
-            playerAnim.SetTrigger("onDeath");
+            //playerAnim.SetTrigger("onDeath");
+            playerAnim.Play("playerDeath");
             SFXScript.instance.deathSFX();
             isDead = true;
             StartCoroutine(Respawn()); 
