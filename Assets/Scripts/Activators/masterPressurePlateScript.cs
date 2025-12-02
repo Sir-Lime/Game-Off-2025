@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class masterPressurePlateScript : MonoBehaviour
+public class masterPressurePlateScript : MonoBehaviour, IActivatable
 {
     private PressurePlateScript[] plates;
     private bool completed = false;
@@ -39,5 +39,15 @@ public class masterPressurePlateScript : MonoBehaviour
         }
 
         SFXScript.instance.pickUpSFX();
+    }
+    public void ResetState()
+    {
+        completed = false;
+        gameObject.tag = "Deactivated";
+
+        foreach (var plate in plates)
+        {
+            plate.ResetState();
+        }
     }
 }

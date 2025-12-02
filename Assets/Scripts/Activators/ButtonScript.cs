@@ -59,7 +59,6 @@ public class ButtonScript : MonoBehaviour, IInteractable, IActivatable
 
     private void ActivateButton()
     {
-        Debug.Log("Is Activated!");
         isActive = true;
         gameObject.tag = "Activated";
         timer = activeDuration;
@@ -79,6 +78,7 @@ public class ButtonScript : MonoBehaviour, IInteractable, IActivatable
     public void ResetState()
     {
         isActive = originalState;
-        spriteRenderer.color = originalSpriteColor;
+        if(isActive == false) DeactivateButton();
+        else ActivateButton();
     }
 }

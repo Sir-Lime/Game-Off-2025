@@ -89,6 +89,7 @@ public class PressurePlateScript : MonoBehaviour, IActivatable
 
     public void ResetState()
     {
+        enabled = true;
         DeactivatePlate();
     }
 }

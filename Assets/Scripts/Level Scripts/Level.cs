@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEngine.Tilemaps;
+
 using System.Linq;
 
 
@@ -30,8 +32,6 @@ public class Level : MonoBehaviour
     private bool isDead = false;
     private Vector3 playerOriginalPos;
     private Vector3 collectibleOriginalPos;
-    public float levelStartTime;
-    private float firstLevelStartTime;
     private IActivatable[] activators;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
@@ -48,6 +48,13 @@ public class Level : MonoBehaviour
 
         // Query gameObjects that implement that IActivable interface
         activators = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IActivatable>().ToArray();
+
+
+    }
+    void Update()
+    {
+        TimerManager.Instance.currentTime = Time.time - TimerManager.Instance.deathTime - TimerManager.Instance.startTime;
+        TimerManager.Instance.time = Time.time;
     }
 
     private void Start() {
@@ -65,13 +72,10 @@ public class Level : MonoBehaviour
         {
             nextScene = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
         }
-        levelStartTime = TimerManager.Instance.GetTime(true);
-        if(SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            firstLevelStartTime = levelStartTime;
-            TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true);
-        }
-        Debug.Log("Level Start Time: " + levelStartTime);
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        TimerManager.Instance.startTime = Time.time;
+        TimerManager.Instance.levelEndTime = TimerManager.Instance.GetTime();
+
     }
 
     public void LoadNextScene()
@@ -87,6 +91,7 @@ public class Level : MonoBehaviour
     
     private IEnumerator LoadLevel()
     {
+
         sceneTransition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
@@ -110,11 +115,13 @@ public class Level : MonoBehaviour
     {
         if(!isDead)
         {
+            TimerManager.Instance.deathTime += TimerManager.Instance.GetTime() - TimerManager.Instance.levelEndTime;
             CameraScript.Instance.ShakeCamera(0.3f, 0.3f);
             player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             playerAnim.SetTrigger("onDeath");
             SFXScript.instance.deathSFX();
             isDead = true;
+            ReloadLevel();
             StartCoroutine(Respawn()); 
         } 
     }
@@ -139,9 +146,9 @@ public class Level : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-        playerAnim.SetTrigger("onRespawn");
+        playerAnim.SetTrigger("onRespawn"); 
         respawnPanel.SetActive(false);
         isDead = false;
-        TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true) + firstLevelStartTime - levelStartTime;
+
     }
 }

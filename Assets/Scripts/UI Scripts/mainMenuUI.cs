@@ -27,9 +27,15 @@ public class mainMenuUI : MonoBehaviour
             PlayerPrefs.SetFloat("SFX", 1);
             PlayerPrefs.SetFloat("MUSIC", 1);
         }
+        
         masterSlider.value = PlayerPrefs.GetFloat("MASTER");
         musicSlider.value = PlayerPrefs.GetFloat("MUSIC");
         SFXslider.value = PlayerPrefs.GetFloat("SFX");
+        string userName = PlayerPrefs.GetString("Name", "nullName");
+        if (userName == "nullName")
+        {
+            nameFieldObject.SetActive(true);
+        }
         input = gameObject.GetComponent<PlayerInput>();
     }
 
