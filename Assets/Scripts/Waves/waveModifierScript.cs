@@ -11,11 +11,13 @@ public class waveModifierScript : MonoBehaviour
     private float jumpWaveSpeedBefore, dashWaveSpeedBefore;
     private bool activated = false;
     private Animator animator;
+    private AudioSource audioSource;
     void Awake()
     {
         jumpWave = GameObject.FindWithTag("JumpWave")?.GetComponent<Wave>();
         dashWave = GameObject.FindWithTag("DashWave")?.GetComponent<Wave>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
     }
     void Update()
@@ -34,6 +36,7 @@ public class waveModifierScript : MonoBehaviour
         if (anyActivated && !activated)
         {
             activated = true;
+            audioSource.enabled = true;
             jumpWave.timeElapsed = 0;
             dashWave.timeElapsed = 0;
             jumpWaveTypeBefore = jumpWave.waveType;
@@ -49,6 +52,7 @@ public class waveModifierScript : MonoBehaviour
         else if (!anyActivated && activated)
         {
             activated = false;
+            audioSource.enabled = false;
             jumpWave.timeElapsed = 0;
             dashWave.timeElapsed = 0;
             jumpWave.movementSpeed = jumpWaveSpeedBefore;

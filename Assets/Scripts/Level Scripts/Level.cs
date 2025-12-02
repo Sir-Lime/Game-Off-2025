@@ -31,6 +31,7 @@ public class Level : MonoBehaviour
     private Vector3 playerOriginalPos;
     private Vector3 collectibleOriginalPos;
     public float levelStartTime;
+    private float firstLevelStartTime;
     private IActivatable[] activators;
 
     // Singleton Pattern so there is always a single instance of this LevelManager in a scene
@@ -38,8 +39,7 @@ public class Level : MonoBehaviour
     {
         collectible = GameObject.FindWithTag("Tape").GetComponent<Collectible>();
         player = GameObject.FindWithTag("Player");
-        levelStartTime = TimerManager.Instance.GetTime(false);
-        TimerManager.Instance.startTime = levelStartTime;
+
         if (Instance != null && Instance != this)
             Destroy(gameObject);
         else
@@ -65,6 +65,13 @@ public class Level : MonoBehaviour
         {
             nextScene = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
         }
+        levelStartTime = TimerManager.Instance.GetTime(true);
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            firstLevelStartTime = levelStartTime;
+            TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true);
+        }
+        Debug.Log("Level Start Time: " + levelStartTime);
     }
 
     public void LoadNextScene()
@@ -103,8 +110,9 @@ public class Level : MonoBehaviour
     {
         if(!isDead)
         {
-            //playerAnim.SetTrigger("onDeath");
-            playerAnim.Play("playerDeath");
+            CameraScript.Instance.ShakeCamera(0.3f, 0.3f);
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            playerAnim.SetTrigger("onDeath");
             SFXScript.instance.deathSFX();
             isDead = true;
             StartCoroutine(Respawn()); 
@@ -129,10 +137,11 @@ public class Level : MonoBehaviour
         playerRb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
 
         yield return new WaitForSeconds(0.3f);
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
         playerAnim.SetTrigger("onRespawn");
         respawnPanel.SetActive(false);
         isDead = false;
-        TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true) -  levelStartTime;
+        TimerManager.Instance.startTime = TimerManager.Instance.GetTime(true) + firstLevelStartTime - levelStartTime;
     }
 }
